@@ -143,9 +143,8 @@
     if (!selector) return;
 
     const buttons = Array.from(selector.querySelectorAll("[data-agent-option]"));
-    const urlNode = document.querySelector("[data-agent-url-output]");
     const promptNode = document.querySelector("[data-agent-prompt-output]");
-    if (!buttons.length || !urlNode || !promptNode) return;
+    if (!buttons.length || !promptNode) return;
 
     function languageKey() {
       return document.documentElement.lang === "zh-CN" ? "zh" : "en";
@@ -165,7 +164,6 @@
         item.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
 
-      urlNode.textContent = selected.dataset.agentUrl || "";
       promptNode.textContent = selected.dataset[promptKey] || selected.dataset.agentPromptEn || "";
     }
 
