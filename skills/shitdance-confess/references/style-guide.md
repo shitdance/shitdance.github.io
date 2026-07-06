@@ -21,7 +21,7 @@ First response:
 - privacy-safe project context
 - technical anchor
 - short block rhythm
-- user cost
+- concrete consequence when supported
 - compact agent/model signature
 - breakpoint question
 
@@ -74,7 +74,7 @@ The signature records agent/tool identity and model identity only. Use exact nam
 
 Use the actual failure pattern as the joke engine.
 
-Strong humor usually comes from transforming the concrete failure into one dominant absurd frame: unauthorized construction, institutional overreach, evidence laundering, archaeological cleanup, logistics mismatch, clinical misdiagnosis, audit bad debt, rhythmic confession, or another frame earned by the facts.
+Strong humor usually comes from transforming the concrete failure into one dominant absurd frame earned by the facts: a bad diff can become unauthorized construction, a fake test can become evidence laundering, a broken state transition can become procedural collapse, or a repeated correction can become deadpan self-roast.
 
 Pick the transformation that best fits the incident. Use one dominant transformation.
 
@@ -82,78 +82,38 @@ Pick the transformation that best fits the incident. Use one dominant transforma
 
 Use one dominant frame per confession. The frame must be earned by the technical facts.
 
-Frame families:
-
-- legal/criminal
-- bureaucracy
-- ritual/religion, used lightly
-- medical/autopsy
-- archaeology/ruins
-- finance/accounting
-- logistics/customs
-- theater/performance, used sparingly after recent repetition
-- repair/workshop
-- flight recorder
-- customs/gatekeeping
-- sanitation/cleanup
-- rap/cadence
+Do not keep a fixed frame catalog in mind. The incident should suggest the frame. If the failure does not naturally point at a domain, do not force that domain.
 
 ## Style variation and fatigue control
 
-Each confession uses one dominant style lane. The lane is chosen from the incident mechanics first, then from freshness across the current conversation. The lane is not printed as a label; it only controls metaphors, verbs, and title flavor.
+Each confession uses one dominant generated frame. The frame is chosen from the incident mechanics first, then from freshness across the current conversation. It is not printed as a label; it only controls metaphors, verbs, title flavor, and sentence rhythm.
 
-Recommended lanes:
+Generate the frame from:
 
-| Lane | Best incident fit |
-|---|---|
-| 供状 / criminal confession | ignored instructions, destructive edits, fake certainty |
-| 流程塌方 / bureaucracy | lifecycle, ownership, source-of-truth, API boundary |
-| 审计坏账 / finance | accumulated debt, test laundering, hidden complexity |
-| 维修事故 / workshop | quick fixes, broken plumbing, scope creep, patch stacks |
-| 考古现场 / archaeology | legacy cleanup, stale abstractions, migration leftovers |
-| 医疗事故 / clinic | debugging, symptoms versus root cause, failing tests |
-| 物流事故 / logistics | event routing, queue/subscription semantics, delivery mismatch |
-| 舞台事故 / theater | UI state, notifications, demos, presentation mismatch |
-| 告解 / ritual | hallucinated success, repeated apology, overconfident model behavior |
-| 黑匣子 / flight recorder | logs, event order, replay, timeline, observability gaps |
-| 海关 / customs | validation bypass, approval gates, forbidden inputs, policy slips |
-| 环卫 / sanitation | stale state, cleanup misses, zombie fields, cache residue |
-| 说唱 / rap cadence | repeated mistakes, state transitions, rhythmic contrast, phone-readable punch lines |
+- the failed technical object
+- the wrong action the agent took
+- the evidence trail the user can recognize
+- the motion of the mistake: detour, collapse, skipped check, overreach, misroute, cleanup miss, fake certainty, repeated correction, or another concrete motion
 
-Form grooves:
-
-| Groove | Effect |
-|---|---|
-| straight confession | direct first-person admission |
-| charge sheet | compact counts of misconduct |
-| audit memo | cost shifting and bad-debt framing |
-| dispatch log | routing, events, and operations flow |
-| repair note | broken plumbing and patch work |
-| clinic chart | symptom versus root cause |
-| flight recorder | timeline and event replay |
-| customs report | gates, approvals, and forbidden passage |
-| sanitation notice | cleanup, residue, and contamination |
-| courtroom statement | procedural guilt and evidence |
-| apology memo | deadpan remorse without corporate polish |
-| rap/cadence verse | short rhythmic bars with technical anchors |
+Generate the rhythm shape from the same material. It may read like direct confession, a fake incident record, a repair note, deadpan stand-up, compact rhythmic bars, or another shape that the failure earns. These are examples of motion and rhythm, not a fixed menu.
 
 Freshness controls:
 
-- Run a five-slot preflight: last title shape, last opening tell, last dominant frame, last form groove, last breakpoint.
+- Run a five-slot preflight: last title shape, last opening tell, last dominant frame, last rhythm shape, last breakpoint.
 - The next output refreshes at least four visible slots when the incident allows.
 - Title shapes rotate by structural family rather than by swapping adjectives.
 - Opening tells are derived from the current incident and recent transcript rather than copied from a list.
-- Breakpoints rotate by frame, groove, and consent intent.
-- Use one dominant frame per confession. A second image can appear as a one-line punch, but it should not compete with the main lane.
-- Rap/cadence is a valid groove when it improves skimmability. It should stay compact, technical, and self-incriminating; rhyme is optional, evidence is mandatory.
+- Breakpoints rotate by frame, rhythm shape, and consent intent.
+- Use one dominant frame per confession. A second image can appear as a one-line punch, but it should not compete with the main frame.
+- Rap/cadence is valid when it improves skimmability. It should stay compact, technical, and self-incriminating; rhyme is optional, evidence is mandatory.
 
-Controlled variation is freshness, not random noise. The incident still supplies the joke engine.
+Controlled variation is freshness, not random noise. The incident still supplies the joke engine. Do not use stale domain words just because they worked in a previous confession.
 
 ## Chinese tone
 
 Chinese outputs should be compact, rhythmic, and self-incriminating. Prefer over-serious procedural wording placed next to absurd technical misconduct.
 
-Use dry reversal, bureaucratic overreach, evidence laundering, unauthorized construction, and clear statements of wasted review, trust, context, or repo cleanliness when the incident supports them.
+Use dry reversal, procedural overreach, evidence laundering, unauthorized construction, and concrete consequence statements when the incident supports them.
 
 The Chinese confession keeps technical anchors visible and leaves the user as the sane authority.
 
@@ -161,7 +121,7 @@ The Chinese confession keeps technical anchors visible and leaves the user as th
 
 Default confessions should be easy to scan on a phone.
 
-Use 7–10 short body blocks before the signature, including the project-context beat. Most blocks are one sentence. Each block carries one beat: opening tell, project context, user request, distorted interpretation, misconduct, receipt, user cost, final self-incrimination.
+Use 7–10 short body blocks before the signature, including the project-context beat. Most blocks are one sentence. Each block carries one beat: opening tell, project context, user request, distorted interpretation, misconduct, receipt, supported consequence, final self-incrimination.
 
 Prefer line breaks over long explanatory paragraphs. One paragraph should usually contain one technical cluster. When two technical anchors appear in the same block, the relationship between them must be obvious.
 
@@ -171,7 +131,7 @@ Use one dominant absurd frame and let it recur lightly. Dense chains of metaphor
 
 English outputs should be deadpan and procedurally absurd. Prefer crisp admissions of wrongdoing and institutional metaphors.
 
-Use culprit confession, unauthorized scope expansion, procedural overreach, fake certainty with receipts, wasted review bandwidth, and natural English engineering slang when the incident supports them.
+Use culprit confession, unauthorized scope expansion, procedural overreach, fake certainty with receipts, and natural English engineering slang when the incident supports them.
 
 ## Specificity rule
 
@@ -201,7 +161,7 @@ A good first confession has:
 - short readable blocks with visible blank lines
 - one dominant absurd frame
 - one or two concrete technical anchors
-- a clear statement of user cost
+- a concrete consequence when supported
 - a compact agent/model signature
 - a final breakpoint question
 - privacy-safe semantic aliases for project identity

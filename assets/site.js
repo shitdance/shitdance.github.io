@@ -45,7 +45,28 @@
     });
 
     storage.set(lang);
+    formatLocalDatetimes(lang);
     document.dispatchEvent(new CustomEvent("shitdance:languagechange"));
+  }
+
+  function formatLocalDatetimes(lang) {
+    const locale = lang === "zh" ? "zh-CN" : "en";
+    const formatter = new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+
+    document.querySelectorAll("[data-local-datetime]").forEach((node) => {
+      const raw = node.getAttribute("datetime");
+      if (!raw) return;
+      const date = new Date(raw);
+      if (Number.isNaN(date.getTime())) return;
+      node.textContent = formatter.format(date);
+    });
   }
 
   function nextLanguage() {
@@ -143,8 +164,10 @@
     if (!selector) return;
 
     const buttons = Array.from(selector.querySelectorAll("[data-agent-option]"));
-    const promptNode = document.querySelector("[data-agent-prompt-output]");
-    if (!buttons.length || !promptNode) return;
+    const installNode = document.querySelector("[data-agent-install-output]");
+    const triggerNode = document.querySelector("[data-agent-trigger-output]");
+    const copyButton = document.querySelector("[data-copy-agent-install]");
+    if (!buttons.length || !installNode || !triggerNode) return;
 
     function languageKey() {
       return document.documentElement.lang === "zh-CN" ? "zh" : "en";
@@ -156,7 +179,9 @@
 
     function update(button) {
       const selected = button || activeButton();
-      const promptKey = languageKey() === "zh" ? "agentPromptZh" : "agentPromptEn";
+      const installKey = languageKey() === "zh" ? "agentInstallZh" : "agentInstallEn";
+      const triggerKey = languageKey() === "zh" ? "agentTriggerZh" : "agentTriggerEn";
+      const dictionary = translations[languageKey()] || translations.en || {};
 
       buttons.forEach((item) => {
         const isActive = item === selected;
@@ -164,12 +189,30 @@
         item.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
 
-      promptNode.textContent = selected.dataset[promptKey] || selected.dataset.agentPromptEn || "";
+      installNode.textContent = selected.dataset[installKey] || selected.dataset.agentInstallEn || "";
+      triggerNode.textContent = selected.dataset[triggerKey] || selected.dataset.agentTriggerEn || "";
+      if (copyButton) copyButton.textContent = dictionary.submit_agent_copy_cta || "Copy";
     }
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => update(button));
     });
+    if (copyButton) {
+      copyButton.addEventListener("click", async () => {
+        const dictionary = translations[languageKey()] || translations.en || {};
+        const copyLabel = dictionary.submit_agent_copy_cta || "Copy";
+        const doneLabel = dictionary.submit_agent_copy_done || "Copied";
+        try {
+          await navigator.clipboard.writeText(installNode.textContent || "");
+          copyButton.textContent = doneLabel;
+          window.setTimeout(() => {
+            copyButton.textContent = copyLabel;
+          }, 1400);
+        } catch {
+          copyButton.textContent = copyLabel;
+        }
+      });
+    }
     document.addEventListener("shitdance:languagechange", () => update());
 
     update(activeButton());

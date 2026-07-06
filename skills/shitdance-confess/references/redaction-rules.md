@@ -72,4 +72,4 @@ Use bracket placeholders for exact secrets, URLs, paths, customers, people, acco
 
 Before preparing a publishable issue, verify internally that identifying project details, exact paths, internal endpoints, proprietary schema, and sensitive business logic were replaced while preserving the agent failure pattern, change boundary, and validation gap.
 
-Do not add a separate redaction-note field to the publishable Shit Dance Moment. Public submission uses the Issue template fields only, including the required `发布确认` checkbox wording.
+Do not add a separate redaction-note field to the publishable Shit Dance Moment. Public submission uses the minimal pasteable schema only: title, tags, and one complete body block. Privacy is handled by redacting the content before preview and getting explicit user confirmation before submission.

@@ -131,7 +131,7 @@ a { color: inherit; }
   background-image: url("./assets/background.png");
   background-position: calc(100% - clamp(120px, 17vw, 260px)) bottom;
   background-repeat: no-repeat;
-  background-size: min(74vw, 980px) auto;
+  background-size: auto min(48vh, 440px);
   opacity: 0.56;
 }
 .hero-copy,
@@ -1179,6 +1179,35 @@ h2 {
   background: var(--blue);
   box-shadow: 0 8px 20px rgba(47,117,255,.18);
 }
+.agent-copy-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+.agent-copy-head span {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+.copy-mini-button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(47,117,255,.22);
+  border-radius: 6px;
+  color: var(--blue);
+  background: rgba(255,255,255,.76);
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 950;
+  cursor: pointer;
+}
+.copy-mini-button:hover {
+  color: var(--ink);
+  border-color: rgba(47,117,255,.42);
+}
 .install-box {
   display: grid;
   gap: 10px;
@@ -1208,7 +1237,8 @@ h2 {
   line-height: 1.45;
   white-space: nowrap;
 }
-.install-box code[data-agent-prompt-output] {
+.install-box code[data-agent-install-output],
+.install-box code[data-agent-trigger-output] {
   white-space: pre-wrap;
 }
 .fallback-path .button {
@@ -1445,7 +1475,7 @@ h2 {
   }
   .hero::after {
     background-position: left 48vw bottom 44px;
-    background-size: min(112vw, 760px) auto;
+    background-size: auto 360px;
     opacity: 0.32;
   }
   .hero-visual {
@@ -1539,7 +1569,7 @@ h2 {
   .hero-mountain { font-size: 2.05rem; }
   .hero::after {
     background-position: left 32vw bottom 42px;
-    background-size: 780px auto;
+    background-size: auto 300px;
     opacity: 0.22;
   }
   .hero-visual { height: 330px; }

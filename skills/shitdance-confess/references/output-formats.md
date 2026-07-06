@@ -22,7 +22,7 @@ Structure:
 6. What the agent effectively optimized for instead.
 7. Concrete misconduct with one technical anchor.
 8. Additional receipt or consequence when useful.
-9. User cost stated clearly.
+9. Concrete consequence when the incident supports it.
 10. Final self-incriminating beat when the rhythm benefits from one.
 11. Signature block with agent/tool and model identity.
 12. Final one-line breakpoint question asking whether the user wants serious analysis or a publishable Shit Dance Moment.
@@ -34,12 +34,12 @@ Constraints:
 - body starts with the opening tell when possible
 - body uses 7–10 short blocks, mostly one sentence each
 - early project-context beat describes the work with a semantic alias before failure details
-- one primary style lane and one form groove control the flavor
-- repeated use runs the five-slot freshness preflight and visibly refreshes at least four of: lane, form groove, title shape, opening tell, breakpoint
+- one generated frame and rhythm shape control the flavor
+- repeated use runs the five-slot freshness preflight and visibly refreshes at least four of: generated frame, rhythm shape, title shape, opening tell, breakpoint
 - each body block carries one beat or one receipt
 - first-person agent voice: “我” or “I”
 - concrete technical anchor from the incident
-- user cost stated clearly
+- concrete consequence when the incident supports it
 - compact agent/model signature before the breakpoint
 - exact model only when known; unknown model is stated as unknown rather than guessed
 - final line is the pause asking whether to do serious analysis or prepare a publishable Moment
@@ -53,7 +53,7 @@ Use when the user asks for a sharper or shorter version.
 Structure:
 
 1. Plain title.
-2. One compact first-person confession with opening tell, privacy-safe project context, agent identity, user's request, misinterpretation, bad action, technical anchor, and user cost.
+2. One compact first-person confession with opening tell, privacy-safe project context, agent identity, user's request, misinterpretation, bad action, technical anchor, and concrete consequence when supported.
 3. Compact agent/model signature.
 4. Breakpoint question.
 
@@ -79,20 +79,33 @@ Use when the user asks for a structured version suitable for shitdance.com or so
 
 First produce a preview. Do not submit yet.
 
-Structure:
+The publishable preview is the same JSON object the user can submit:
 
-1. Public title.
-2. Agent/tool.
-3. Agent slogan/opening tell.
-4. Redacted confession-style failure scene close to the first output.
-5. Original context: what the user asked and what the agent distorted.
-6. Lesson/prevention rule.
-7. Tags.
-8. Publish confirmation using the exact Issue template wording.
+```json
+{
+  "title": "...",
+  "agent": "Codex",
+  "model": "GPT-5",
+  "tags": ["..."],
+  "body": "..."
+}
+```
+
+Rules:
+
+- Field names are always English. Required keys are exactly `title`, `agent`, `tags`, and `body`; `model` is optional.
+- `title` is the public title. The value may be Chinese or English according to the user's language.
+- `agent` is the culprit agent/tool name when known.
+- `model` is the exact model when known. If unknown, omit the `model` field; do not invent a model and do not write placeholder values such as `Unknown`, `Unspecified`, or `N/A`.
+- `tags` is a short array for failure-pattern tags only. Do not duplicate `agent` or `model` in tags.
+- `body` is the redacted confession-style content, close to the first output.
+- The body may have paragraphs and a closing signature, but it is one complete content field.
+- Do not split the body into fields for opening tell, failure scene, original context, lesson, public confirmation, autopsy summary, prevention constraints, or redaction note.
+- Submission datetime comes from the GitHub Issue `createdAt` timestamp, not generated content.
 
 After the preview, ask one clear question: confirm whether to submit and whether the user wants to add or remove anything.
 
-Before outputting a publishable version, confirm whether it should be public and redacted if that was not already clear. The preview itself should include the Issue template confirmation field.
+Before outputting a publishable version, confirm whether it should be public and redacted if that was not already clear.
 
 After preview confirmation, check `gh` before tool-assisted submission:
 
@@ -104,21 +117,18 @@ After preview confirmation, check `gh` before tool-assisted submission:
 
 Use when the user asks for issue-ready content.
 
-Structure:
+The GitHub Issue template should expose one textarea where the user pastes the full JSON object:
 
-1. Issue title.
-2. `标题`
-3. `Agent`
-4. `Agent 口头禅`
-5. `翻车现场`
-6. `原始上下文`
-7. `这次说明了什么`
-8. `标签`
-9. `发布确认`: `我确认内容可以公开发布，并已去除隐私信息`
+```json
+{
+  "title": "...",
+  "agent": "...",
+  "tags": ["..."],
+  "body": "..."
+}
+```
 
-Keep `翻车现场` close to the first confession in tone and substance. Keep the content redacted and public-safe.
-
-Do not include extra publish fields such as technical autopsy summary, prevention constraints, or redaction note. If needed, compress the public lesson into `这次说明了什么`; privacy is handled by redaction and the `发布确认` field.
+Keep `body` close to the first confession in tone and substance. Keep the content redacted and public-safe. Do not include extra publish fields.
 
 ## First-output shape guard
 
