@@ -87,12 +87,12 @@ Structure:
 4. Redacted confession-style failure scene close to the first output.
 5. Original context: what the user asked and what the agent distorted.
 6. Lesson/prevention rule.
-7. Failure labels when useful.
-8. Redaction note when useful.
+7. Tags.
+8. Publish confirmation using the exact Issue template wording.
 
 After the preview, ask one clear question: confirm whether to submit and whether the user wants to add or remove anything.
 
-Before outputting a publishable version, confirm whether it should be public, anonymous, and redacted if that was not already clear.
+Before outputting a publishable version, confirm whether it should be public and redacted if that was not already clear. The preview itself should include the Issue template confirmation field.
 
 After preview confirmation, check `gh` before tool-assisted submission:
 
@@ -114,9 +114,11 @@ Structure:
 6. `原始上下文`
 7. `这次说明了什么`
 8. `标签`
-9. Optional public/redaction confirmation note.
+9. `发布确认`: `我确认内容可以公开发布，并已去除隐私信息`
 
 Keep `翻车现场` close to the first confession in tone and substance. Keep the content redacted and public-safe.
+
+Do not include extra publish fields such as technical autopsy summary, prevention constraints, or redaction note. If needed, compress the public lesson into `这次说明了什么`; privacy is handled by redaction and the `发布确认` field.
 
 ## First-output shape guard
 

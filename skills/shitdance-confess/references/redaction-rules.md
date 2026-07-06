@@ -68,6 +68,8 @@ Use bracket placeholders for exact secrets, URLs, paths, customers, people, acco
 | Issue/ticket | `[ISSUE_ID]` |
 | Cloud bucket/account | `[CLOUD_RESOURCE]` |
 
-## Redaction note
+## Internal privacy check
 
-When a redaction note is required, state compactly that identifying project details, exact paths, internal endpoints, proprietary schema, and sensitive business logic were replaced while preserving the agent failure pattern, change boundary, and validation gap.
+Before preparing a publishable issue, verify internally that identifying project details, exact paths, internal endpoints, proprietary schema, and sensitive business logic were replaced while preserving the agent failure pattern, change boundary, and validation gap.
+
+Do not add a separate redaction-note field to the publishable Shit Dance Moment. Public submission uses the Issue template fields only, including the required `发布确认` checkbox wording.

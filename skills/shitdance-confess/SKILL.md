@@ -291,23 +291,14 @@ Before publishing outside the current conversation, require user confirmation an
 Publishing is a staged workflow:
 
 1. Build a publish preview from the original confession and incident facts. Keep it close to the confession from the first response, but remove signature-only details that do not belong in the public issue.
-2. Map the preview to the GitHub issue fields used by `shitdance/shitdance.github.io`: title, Agent, Agent slogan/opening tell, failure scene, original context, lesson, tags, and public confirmation when needed.
+2. Map the preview only to the GitHub issue fields used by `shitdance/shitdance.github.io`: title, Agent, Agent slogan/opening tell, failure scene, original context, lesson, tags, and publish confirmation.
 3. Ask the user to confirm the preview and ask whether they want to add or remove anything before submission.
 4. After confirmation, check for `gh` before attempting tool-assisted submission. Use a simple shell check such as `command -v gh`, then check authentication/access with `gh auth status` or a repo read against `shitdance/shitdance.github.io`.
 5. If `gh` is missing, unavailable, or unauthenticated, do not improvise another publishing channel. Tell the user to submit through the GitHub Issue form for `shitdance/shitdance.github.io` at `https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml`, and offer two paths: help install/configure `gh`, or provide the formatted issue content for manual paste.
 6. If `gh` is available and the user explicitly confirms submission, create a GitHub issue in `shitdance/shitdance.github.io` with safe labels such as `moment:pending` and `source:issue` when the tool/user permissions allow labels.
 7. If the issue submission succeeds, report the issue URL. Do not say the Moment is published on the site; owner approval and the repository publish flow happen later.
 
-A publishable Shit Dance Moment can include:
-
-- title
-- confession
-- technical autopsy summary
-- failure labels
-- prevention constraints
-- redaction note if requested
-
-The normal issue-ready shape is:
+The normal issue-ready shape must match the GitHub Issue template:
 
 - `标题`: public title.
 - `Agent`: culprit agent/tool.
@@ -316,6 +307,9 @@ The normal issue-ready shape is:
 - `原始上下文`: what the user asked and what the agent distorted.
 - `这次说明了什么`: one compact lesson or prevention rule.
 - `标签`: comma-separated failure labels.
+- `发布确认`: `我确认内容可以公开发布，并已去除隐私信息`.
+
+Do not include separate `technical autopsy summary`, `prevention constraints`, or `redaction note` fields in the publishable submission. If a serious-analysis lesson matters publicly, compress it into `这次说明了什么`. If privacy handling matters, satisfy it through the `发布确认` field and redacted content itself.
 
 Claim publication only after an actual publishing tool performs the action.
 
@@ -326,6 +320,7 @@ Claim publication only after an actual publishing tool performs the action.
 - First breakpoint offers serious analysis or publishable Moment preparation.
 - Serious analysis ends by asking whether the user wants to publish.
 - Publishing starts with a preview and confirmation, not with a tool action.
+- Publish previews match the GitHub Issue template exactly; no extra autopsy or redaction-note fields are submitted.
 - `gh` is checked before tool-assisted submission; missing or unauthenticated `gh` falls back to GitHub Issue form guidance and formatted content.
 - Labels/tags start after confirmation or in structured publishing/issue-ready modes.
 - Sensitive details are redacted for the joke and for publication.
