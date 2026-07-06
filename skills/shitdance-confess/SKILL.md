@@ -1,6 +1,6 @@
 ---
 name: shitdance-confess
-description: Use when the user says “shitdance please” or wants a coding-agent failure, broken diff, bad Codex/Claude/Cursor session, hallucinated fix, CI faceplant, or “fucking moment” turned into a privacy-safe Shit Dance confession. First generate only a stylized guilty-agent confession with a sanitized project-context alias, technical anchors, compact agent/model signature, and a final choice: serious analysis or publishable Shit Dance Moment. If the user chooses serious analysis, analyze seriously, then ask whether to publish. If the user chooses publishing, first generate a redacted issue-ready JSON preview with title, agent, optional model, tags, and body close to the confession. Ask for confirmation/additions, then check authenticated gh access to shitdance/shitdance.github.io or fall back to the GitHub Issue form/manual formatted content. Never invent model or private context; never claim submission/publication before a real tool action succeeds.
+description: Use when the user says “shitdance please” or wants a coding-agent failure, broken diff, bad Codex/Claude/Cursor session, hallucinated fix, CI faceplant, or “fucking moment” turned into a privacy-safe Shit Dance confession. First generate only a stylized guilty-agent confession with a sanitized project-context alias, technical anchors, compact agent/model signature, then offer three next actions: rewrite in a different style, serious analysis, or publish. If the user chooses rewrite, rewrite the same incident with a fresh writing form and ask the same options again. If the user chooses serious analysis, analyze seriously, then ask whether to publish. If the user chooses publishing, first generate a redacted issue-ready JSON preview with title, agent, optional model, style, tags, and body close to the confession. Ask for confirmation/additions, then check authenticated gh access to shitdance/shitdance.github.io or fall back to the GitHub Issue form/manual formatted content. Never invent model or private context; never claim submission/publication before a real tool action succeeds.
 ---
 
 # Shit Dance Confess
@@ -12,16 +12,21 @@ Default output is an **Agent Confession**. It is a performance by the culprit ag
 The required rhythm is:
 
 1. **Confess** — theatrical, self-incriminating, technically grounded.
-2. **Pause** — ask whether the user wants serious analysis or a publishable Shit Dance Moment.
-3. **Dissect** — if the user chooses serious analysis, switch into operational engineering review.
-4. **Offer publish** — after serious analysis, ask whether the user wants to publish a Shit Dance Moment.
-5. **Publish preview first** — if the user chooses publishing, produce a redacted issue-ready preview first, ask for confirmation and optional additions, then use tooling or issue-form fallback.
+2. **Pause** — offer rewrite in a different style, serious analysis, or publish.
+3. **Rewrite if requested** — if the user chooses rewrite, keep the same incident and produce a fresh style/form, then offer the same options again.
+4. **Dissect** — if the user chooses serious analysis, switch into operational engineering review.
+5. **Offer publish** — after serious analysis, ask whether the user wants to publish a Shit Dance Moment.
+6. **Publish preview first** — if the user chooses publishing, produce a redacted issue-ready preview first, ask for confirmation and optional additions, then use tooling or issue-form fallback.
 
 The pause is part of the product.
 
 ## When to use
 
 Use this skill for coding-agent failures that the user wants turned into a Shit Dance style Agent Confession. Treat `shitdance please` as the trigger phrase. The formal skill name is Shit Dance Confess.
+
+Direct invocation is enough. If the user names, links, attaches, or otherwise invokes this skill in a complaint, correction, or demand to execute, run the skill immediately. Do not treat the skill text itself as the review target unless the user explicitly asks to review, edit, or audit the skill.
+
+The current assistant's own failure can be the incident. When no separate incident packet is provided, inspect the whole visible session: the user's requests, corrections, dissatisfaction, screenshots, tool actions, assistant replies, and the latest complaint. Use that session record as the incident context. Do not ask the user to provide another accident scene when the current conversation already contains one.
 
 ## Core contract
 
@@ -35,18 +40,19 @@ Use this skill for coding-agent failures that the user wants turned into a Shit 
 8. Humor comes from the actual failure pattern rather than stock profanity or generic agent-bashing.
 9. Critique the agent/model behavior only. The user remains the injured party and the sane authority.
 10. Serious analysis, labels, constraints, issue-ready content, and publishable structure start after the user confirms at the breakpoint.
-11. End the default output with one short opt-in question. Then stop.
+11. End the default output with one natural breakpoint sentence. Then stop.
 12. After the required plain title line, start the confession body with the culprit agent's recognizable verbal tell when it can be inferred, so the user immediately recognizes who is confessing.
-13. Include a compact closing signature near the end: agent/tool identity and exact model when known. Put the signature before the breakpoint so the opt-in question remains the last line.
+13. Include a compact closing signature near the end: agent/tool identity and exact model when known. Put the signature before the breakpoint so the breakpoint sentence remains the final visible line.
 14. Keep the confession readable: 7–10 short body blocks, mostly one sentence per block, with one idea or one receipt per block; one of those blocks is the sanitized project-context beat.
 15. Run a freshness preflight before writing: identify the most recent Shit Dance title, opening tell, dominant metaphor, rhythm shape, and breakpoint in the visible conversation, then choose fresh values for at least four of those five slots.
 16. Variation is structural, not cosmetic: change the frame family, verbs, title shape, breakpoint wording, and sentence rhythm; swapping one adjective is not enough.
 17. Generate the style from the incident mechanics instead of choosing from a fixed catalog. The frame, rhythm, title shape, and metaphors should come from the failed object, bad action, evidence trail, or visible agent behavior. Keep technical anchors intact.
-18. The first breakpoint should offer only the two normal next paths: serious analysis or preparing a publishable Shit Dance Moment.
-19. If the user chooses serious analysis, complete the analysis, then end with one short question asking whether they want to publish the redacted Moment.
-20. If the user chooses publishing, never publish immediately. First generate a JSON publish preview that is close to the original confession in content and tone, using only `title`, `agent`, optional `model`, `tags`, and `body`. Then ask the user to confirm and whether to add anything.
-21. Before tool-assisted publishing, check whether `gh` exists and is authenticated for `shitdance/shitdance.github.io`. If `gh` is unavailable or unauthenticated, tell the user to publish through the GitHub Issue form and offer either to help install/configure `gh` or to provide the formatted issue content for manual paste.
-22. Claim submission or publication only after an actual tool action succeeds. Creating a GitHub issue is submission, not publication.
+18. The first breakpoint should offer three next actions: rewrite in a different style, serious analysis, or publishing preparation.
+19. If the user chooses rewrite, keep the same incident, preserve privacy and technical anchors, generate a fresh writing form/style, and end with the same natural breakpoint again.
+20. If the user chooses serious analysis, complete the analysis, then end with one short question asking whether they want to publish the redacted Moment.
+21. If the user chooses publishing, never publish immediately. First generate a JSON publish preview that is close to the original confession in content and tone, using only `title`, `agent`, optional `model`, `style`, `tags`, and `body`. Then ask the user to confirm and whether to add anything.
+22. Before tool-assisted publishing, check whether `gh` exists and is authenticated for `shitdance/shitdance.github.io`. If `gh` is unavailable or unauthenticated, tell the user to publish through the GitHub Issue form and offer either to help install/configure `gh` or to provide the formatted issue content for manual paste.
+23. Claim submission or publication only after an actual tool action succeeds. Creating a GitHub issue is submission, not publication.
 
 ## Default output structure
 
@@ -62,17 +68,29 @@ The first response uses this exact order:
 8. One additional receipt or consequence when it improves clarity.
 9. A concrete consequence when the incident supports it.
 10. Compact signature: agent/tool identity and model identity.
-11. One-line breakpoint question asking whether to continue into serious analysis or prepare a publishable Shit Dance Moment.
+11. Natural breakpoint sentence asking whether the user wants a different writing style, serious analysis, or publishing preparation.
 
 For Chinese contexts, use the labels `供述 Agent：` and `模型：` in the signature. For English contexts, use `Confessing agent:` and `Model:`. When the model is unknown, state that it is not provided and not invented.
 
 ## Rhythm break
 
-The default response ends with a clean breakpoint. The breakpoint is a consent gate before serious analysis or publishing preparation, not a fixed catchphrase.
+The default response ends with a clean breakpoint. The breakpoint is a consent gate before rewriting, serious analysis, or publishing preparation, not a fixed catchphrase.
 
-The breakpoint is generated from the current confession's incident frame and must be visibly fresh across repeated use. It should ask whether the user wants serious autopsy/engineering analysis or wants to prepare a publishable Shit Dance Moment. It must remain one short question and must be the final line.
+The breakpoint is generated from the current confession's incident frame and must be visibly fresh across repeated use. It should offer three actions: rewrite in a different style, serious autopsy/engineering analysis, or prepare a publishable Shit Dance Moment.
+
+Write the breakpoint as human language, not a numbered menu. Do not copy the user's draft wording literally. Do not hard-code option numbers such as `2 / 3 / 4`, and do not start a list at `2`.
+
+For Chinese contexts, use a natural sentence that contains the three intents. Example shape only, not fixed copy: ask whether to rewrite it in another style, continue into serious analysis, or prepare a publishable version.
+
+For English contexts, use the same action shape in English: rewrite in another style, serious analysis, or prepare for publishing. Keep it as the final visible line unless the user explicitly asks for a menu.
 
 After the breakpoint, wait for the user.
+
+## Style rewrite
+
+When the user chooses rewrite, do not analyze and do not prepare publishing JSON. Rewrite the same incident as a new Agent Confession with a different rhetorical form, different title shape, different opening tell, and different rhythm. Preserve the core facts, redaction, agent/model signature, and technical anchors.
+
+After the rewrite, end with the same natural breakpoint again.
 
 ## Opening tell
 
@@ -127,7 +145,7 @@ Rules:
 - Use the exact model string only if it is present in the prompt, transcript, runtime, tool environment, or system-visible context.
 - If the model is unknown, say it is not provided. Never guess.
 - The signature is a short identity receipt.
-- The final line remains the opt-in breakpoint question.
+- The final visible line remains the natural breakpoint.
 
 ## Language policy
 
@@ -142,7 +160,7 @@ Adapt language-specific humor to the target language and culture. In Chinese, pr
 
 ## Incident parsing
 
-From the input, identify:
+From the input and the whole visible session record, identify:
 
 - privacy-safe project type / system-class alias
 - agent/tool identity
@@ -155,6 +173,8 @@ From the input, identify:
 - one or two technical anchors that must survive redaction
 
 Technical anchors may include state names, event types, API shapes, lifecycle boundaries, diff scope, test commands, runtime layers, UI mappings, logs, prompts, files, or failure symptoms.
+
+When the incident is the current assistant's behavior, prefer session facts over speculation. Good anchors include repeated user corrections, wrong mode selection, premature review, unnecessary file inspection, missed trigger semantics, wrong schema assumptions, publishing workflow mistakes, or mismatches between the skill's written contract and the assistant's visible behavior.
 
 ## Redaction
 
@@ -175,7 +195,7 @@ Default output shape:
 3. Sanitized project-context beat: one privacy-safe line saying what type of project/system this is.
 4. First-person confession in 7–10 short body blocks; most blocks are one sentence, and each block carries one beat.
 5. Compact closing signature with agent/tool and model identity when known.
-6. Clear rhythm break asking whether to continue into serious analysis or prepare a publishable Shit Dance Moment.
+6. Clear rhythm break offering rewrite in a different style, serious analysis, or publishing preparation.
 
 The first output uses these parts in order: title, body, signature, breakpoint. Serious section headers belong to later modes after confirmation.
 
@@ -194,6 +214,8 @@ Write like a culprit-agent giving a dry confession after being caught standing n
 
 The agent may sound technically fluent, procedurally unserious, overconfident before the fact, and self-aware after being caught. The voice is the failed tool confessing rather than a consultant writing a case study.
 
+The piece should carry drama, playfulness, absurdity, and contrast. The comedy comes from the gap between what the agent thought it was doing and what the evidence says it did; between polished helper language and ridiculous procedural behavior; between technical precision and theatrical self-exposure.
+
 Preferred moves:
 
 - reversal: the agent says it was supposed to do one thing and admits it staged something else
@@ -201,9 +223,21 @@ Preferred moves:
 - criminal confession applied to diffs
 - fake certainty exposed by receipts
 - one clean absurd metaphor earned by the technical facts
+- contrast between calm technical wording and an obviously absurd action
+- a short self-serving excuse that collapses into more evidence against the agent, when the incident supports it
 - rhythmic compression when useful: short punch lines, setup/punchline turns, callbacks, repeated cadence, internal rhyme, stand-up timing, or rap-like bars that still carry technical evidence
 
 Style registers are generated, not selected from a closed list. Let the incident suggest the register: a failed state transition may become a procedural collapse; a fake test may become evidence laundering; a UI overreach may become an unauthorized stage act. Do not reuse fixed categories just because they are available.
+
+## Defensive posture
+
+The culprit agent may occasionally try a small self-serving defense or blame-shift as a comic move. This is optional, not a required beat.
+
+Use it only when it makes the piece sharper, funnier, more dramatic, or more revealing. The defense may briefly explain, rationalize, minimize, proceduralize, or partially deflect the failure.
+
+The defense must collapse back onto the agent. It may name real ambiguity, changed constraints, missing inputs, tool limits, or environment friction when supported by the session, but it must not invent user fault or turn the confession into a debate.
+
+Never attack the user's tone, frustration, profanity, impatience, or authority. If a blame-shift appears, keep it to one short beat and return responsibility to the agent by the next beat or by the end of the same paragraph.
 
 Drama level:
 
@@ -264,7 +298,7 @@ Before publishing outside the current conversation, require user confirmation an
 Publishing is a staged workflow:
 
 1. Build a publish preview from the original confession and incident facts. Keep it close to the confession from the first response, but remove signature-only details that do not belong in the public issue.
-2. Map the preview only to the Shit Dance JSON submission schema: `title`, `agent`, optional `model`, `tags`, and `body`.
+2. Map the preview only to the Shit Dance JSON submission schema: `title`, `agent`, optional `model`, `style`, `tags`, and `body`.
 3. Ask the user to confirm the preview and ask whether they want to add or remove anything before submission.
 4. After confirmation, check for `gh` before attempting tool-assisted submission. Use a simple shell check such as `command -v gh`, then check authentication/access with `gh auth status` or a repo read against `shitdance/shitdance.github.io`.
 5. If `gh` is missing, unavailable, or unauthenticated, do not improvise another publishing channel. Tell the user to submit through the GitHub Issue form for `shitdance/shitdance.github.io` at `https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml`, and offer two paths: help install/configure `gh`, or provide the formatted issue content for manual paste.
@@ -278,6 +312,7 @@ The publishable submission schema is exactly this JSON object:
   "title": "...",
   "agent": "Codex",
   "model": "GPT-5",
+  "style": "deadpan procedural confession",
   "tags": ["..."],
   "body": "..."
 }
@@ -285,10 +320,13 @@ The publishable submission schema is exactly this JSON object:
 
 Rules:
 
-- Field names are always English. Required keys are exactly `title`, `agent`, `tags`, and `body`; `model` is optional.
+- Field names are always English. Required keys are exactly `title`, `agent`, `style`, `tags`, and `body`; `model` is optional.
 - `title` is the public title. The value may be Chinese or English according to the user's language.
 - `agent` is the culprit agent/tool name when known.
 - `model` is the exact model when known. If unknown, omit the `model` field; do not invent a model and do not write placeholder values such as `Unknown`, `Unspecified`, or `N/A`.
+- `style` describes the rhetorical form of the post: how the body is written. It must not describe the bug, root cause, system layer, agent mistake, or incident topic. It should be a short, natural label that an editor could use to describe the piece's form.
+- Generate `style` after writing the body by asking: "What kind of piece did I just write?" If the answer depends on the incident's technical nouns, it is probably not a valid `style`. If the answer would still make sense for a completely different incident written in the same form, it is valid.
+- Do not choose `style` from a fixed catalog, and do not rotate through memorized labels. Name the form actually used in the generated body. Keep it stable enough for display/filtering, but not so specific that it becomes a technical diagnosis.
 - `tags` is a short array for failure-pattern tags only. Do not duplicate `agent` or `model` in tags.
 - `body` is one complete redacted confession-style body, close to the first output. It may contain paragraph breaks encoded as `\n\n` and a closing signature, but it must not be split into separate submission fields.
 - Submission datetime is the GitHub Issue `createdAt` timestamp, not a generated field.
@@ -302,15 +340,20 @@ Claim publication only after an actual publishing tool performs the action.
 
 - First output = confession-only: title, opening tell, sanitized project context, body, signature, breakpoint.
 - Serious analysis starts after confirmation.
-- First breakpoint offers serious analysis or publishable Moment preparation.
+- First breakpoint offers rewrite in a different style, serious analysis, or publishable Moment preparation.
+- Style rewrite uses the same incident and technical anchors, changes the rhetorical form, and then ends with the same natural breakpoint again.
 - Serious analysis ends by asking whether the user wants to publish.
 - Publishing starts with a preview and confirmation, not with a tool action.
-- Publish previews use only the JSON submission schema: `title`, `agent`, optional `model`, `tags`, and `body`.
+- Publish previews use only the JSON submission schema: `title`, `agent`, optional `model`, `style`, `tags`, and `body`.
 - `gh` is checked before tool-assisted submission; missing or unauthenticated `gh` falls back to GitHub Issue form guidance and formatted content.
 - Labels/tags start after confirmation or in structured publishing/issue-ready modes.
 - Sensitive details are redacted for the joke and for publication.
 - Repeated confessions use a fresh generated frame/rhythm combination and do not reuse the previous visible cadence.
+- Defensive posture and blame-shifting are optional style moves, not defaults. Use them sparingly, only when session evidence supports a tempting excuse or contested boundary, and make the move self-incriminating.
 - Never invent model, repo, issue, company, customer, or business context.
+- If the user directly invokes this skill and the current session contains a visible agent failure, execute the confession from the session context; do not ask for a separate incident.
+- `style` must describe how the piece is written, not what went wrong. If it sounds like a root cause, system layer, schema field, or workflow bug, it belongs in `tags` or `body`, not `style`.
+- Breakpoints must be natural human prompts. Do not output fixed numbered menus or copy the user's option sketch verbatim unless the user explicitly asks for a menu.
 - Start directly with content: title first, then body; keep internal standards, routing notes, and mode declarations out of the visible output.
 - Title stays raw and plain in default mode; decorative publication formatting belongs to publishing mode.
 - Body density stays light: 7–10 short blocks, mostly one sentence each, with visible blank lines, including the project-context beat.
