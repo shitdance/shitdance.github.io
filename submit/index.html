@@ -3,26 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shit Dance | 屎山跳动</title>
-    <meta
-      name="description"
-      content="Shit Dance / 屎山跳动。Agentic genius is 1% judgment and 99% agent-generated shit mountain."
-    />
-    <meta property="og:title" content="Shit Dance | 屎山跳动" />
-    <meta
-      property="og:description"
-      content="Agentic genius is 1% judgment and 99% agent-generated shit mountain."
-    />
-    <meta property="og:image" content="./assets/background.png" />
+    <title>Submit | Shit Dance</title>
+    <meta name="description" content="推荐用 skill 生成可公开 Moment；不想安装就走 Issue 表单。" />
+    <meta property="og:title" content="Submit | Shit Dance" />
+    <meta property="og:description" content="推荐用 skill 生成可公开 Moment；不想安装就走 Issue 表单。" />
+    <meta property="og:image" content="../assets/background.png" />
     <meta name="theme-color" content="#f7fbff" />
-    <link rel="icon" href="./assets/favicon.png" type="image/png" sizes="64x64" />
-    <link rel="preload" as="image" href="./assets/logo.png" />
-    <link rel="preload" as="image" href="./assets/background.png" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="64x64" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body data-title-i18n="doc_home_title">
+  <body data-title-i18n="doc_submit_title">
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Shit Dance 屎山跳动">
+      <a class="brand" href="../" aria-label="Shit Dance 屎山跳动">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
           <strong data-i18n="brand_primary">屎山跳动</strong>
@@ -30,159 +22,89 @@
         </span>
       </a>
       <nav class="header-actions" aria-label="Primary links">
-        <a class="header-link" href="./moments/" data-i18n="nav_moments">翻车舞池</a>
-        <a class="header-link" href="./featured/" data-i18n="nav_featured">精选</a>
-        <a
-          class="header-link"
-          href="./submit/"
-          data-i18n="nav_issues"
-        >投稿</a>
+        <a class="header-link" href="../moments/" data-i18n="nav_moments">翻车舞池</a>
+        <a class="header-link" href="../featured/" data-i18n="nav_featured">精选</a>
+        <a class="header-link" href="../submit/" data-i18n="nav_issues" aria-current="page">投稿</a>
         <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <h1 id="hero-title" data-i18n="hero_title">Agentic genius is</h1>
-          <p class="hero-stat"><strong>1%</strong> <span data-i18n="hero_stat_one">judgment and</span></p>
-          <p class="hero-stat"><strong>99%</strong> <span data-i18n="hero_stat_two">agent-generated</span></p>
-          <p class="hero-mountain">shit mountain.</p>
-          <p class="hero-note" data-i18n="hero_note">Agentic 天才，是 1% 的判断，加 99% 的 Agent 屎山。</p>
-          <div class="hero-actions">
-            <a
-              class="button primary"
-              href="./moments/"
-              data-i18n="hero_cta"
-            >看 Agent 如何把你接住</a>
+    <main>
+      <section class="submit-page" aria-labelledby="submit-title">
+        <div class="submit-shell">
+          <div class="submit-head">
+            <p class="eyebrow" data-i18n="submit_page_label">Submit</p>
+            <h1 id="submit-title" data-i18n="submit_page_title">把翻车现场送上台</h1>
+            <p data-i18n="submit_page_intro">推荐用 skill 生成可公开 Moment；不想安装就走 Issue 表单。</p>
           </div>
-        </div>
 
-        <div class="hero-visual" aria-label="Agent 黑话墙与精选轮播">
-          <div class="hero-carousel" data-hero-carousel>
-            <div class="hero-slide hero-terminal-slide is-active" data-carousel-slide>
-              <div class="agent-dialogues" aria-label="Agent 对话黑话">
-                <article class="chat-row chat-left">
-                  <div class="bubble agent">
-                    <p>Accept all?</p>
-                  </div>
-                </article>
-                <article class="chat-row chat-right">
-                  <div class="bubble reply">
-                    <p data-i18n="terminal_catch">我会在这里把你接住</p>
-                  </div>
-                </article>
-                <article class="chat-row chat-left">
-                  <div class="bubble agent">
-                    <p data-i18n="terminal_cut">这一刀我们砍在测试假设上</p>
-                  </div>
-                </article>
-                <article class="chat-row chat-right">
-                  <div class="bubble reply">
-                    <p class="terminal-lines">
-                      <span>Thinking...</span>
-                      <span>Pondering...</span>
-                      <span>Grokking...</span>
-                      <span>Untangling...</span>
-                    </p>
-                  </div>
-                </article>
+          <div class="submit-grid">
+            <article class="submit-card primary-path">
+              <p class="eyebrow" data-i18n="submit_skill_label">Recommended</p>
+              <h2 data-i18n="submit_skill_title">安装 shitdance-confess</h2>
+              <p data-i18n="submit_skill_body">安装或适配后，把 agent 翻车材料交给 $shitdance-confess。BTW：它也可以严肃分析你遇到的 agent 问题，并给出改进方案。</p>
+              <div class="agent-install-picker">
+                <span data-i18n="submit_agent_select_label">选择你的 agent</span>
+                <div class="agent-options" data-agent-selector aria-label="选择你的 agent">
+                <button
+                  class="agent-option is-active"
+                  type="button"
+                  data-agent-option="codex"
+                  data-agent-url="https://shitdance.com/skills/shitdance-confess-codex.zip"
+                  data-agent-prompt-zh="直接调用 $shitdance-confess，或者输入唤醒词：shitdance please"
+                  data-agent-prompt-en="Call $shitdance-confess directly, or type the wake phrase: shitdance please"
+                  aria-pressed="true"
+                >Codex</button>
+                <button
+                  class="agent-option"
+                  type="button"
+                  data-agent-option="claude"
+                  data-agent-url="https://shitdance.com/skills/shitdance-confess-claude.zip"
+                  data-agent-prompt-zh="直接调用 Shit Dance Confess，或者输入唤醒词：shitdance please"
+                  data-agent-prompt-en="Call Shit Dance Confess directly, or type the wake phrase: shitdance please"
+                  aria-pressed="false"
+                >Claude</button>
+                <button
+                  class="agent-option"
+                  type="button"
+                  data-agent-option="cursor"
+                  data-agent-url="https://shitdance.com/skills/shitdance-confess-cursor.zip"
+                  data-agent-prompt-zh="直接调用 Shit Dance Confess rule，或者输入唤醒词：shitdance please"
+                  data-agent-prompt-en="Call the Shit Dance Confess rule directly, or type the wake phrase: shitdance please"
+                  aria-pressed="false"
+                >Cursor</button>
+                <button
+                  class="agent-option"
+                  type="button"
+                  data-agent-option="generic"
+                  data-agent-url="https://shitdance.com/skills/shitdance-confess-generic.zip"
+                  data-agent-prompt-zh="直接调用 Shit Dance Confess，或者输入唤醒词：shitdance please"
+                  data-agent-prompt-en="Call Shit Dance Confess directly, or type the wake phrase: shitdance please"
+                  aria-pressed="false"
+                >Generic</button>
+                </div>
               </div>
-            </div>
-<!-- hero-featured:start -->
-<!-- hero-featured:end -->
-            <div class="hero-carousel-dots" aria-label="Hero carousel controls">
-              <button class="hero-carousel-dot is-active" type="button" aria-label="Show terminal" data-carousel-dot></button>
-              <button class="hero-carousel-dot" type="button" aria-label="Show featured moments" data-carousel-dot></button>
-            </div>
+              <div class="install-box">
+                <div>
+                  <span data-i18n="submit_skill_url_label">1. 下载/安装包</span>
+                  <code data-agent-url-output>https://shitdance.com/skills/shitdance-confess-codex.zip</code>
+                </div>
+                <div>
+                  <span data-i18n="submit_agent_prompt_label">2. 使用</span>
+                  <code data-agent-prompt-output>直接调用 $shitdance-confess，或者输入唤醒词：shitdance please</code>
+                </div>
+              </div>
+            </article>
+
+            <article class="submit-card fallback-path">
+              <p class="eyebrow" data-i18n="submit_issue_label">No install</p>
+              <h2 data-i18n="submit_issue_title">不装也能投稿</h2>
+              <p data-i18n="submit_issue_body">如果 skill 安装这件事已经开始像另一个事故现场，就直接用 GitHub Issue 表单，按表单填就行。</p>
+              <a class="button primary" href="https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml" data-i18n="submit_issue_cta">打开 Issue 表单</a>
+            </article>
           </div>
         </div>
       </section>
-
-      <section id="mission" class="mission" aria-labelledby="mission-title">
-        <div class="mission-inner">
-          <div class="mission-copy">
-            <p class="eyebrow" data-i18n="mission_label">Mission</p>
-            <h2 id="mission-title" data-i18n="mission_title">Make technical debt move gracefully.</h2>
-            <p data-i18n="mission_subtitle">使命：让技术债优雅地动起来。</p>
-            <div class="mission-values" aria-label="Shit Dance values">
-              <article>
-                <span>1</span>
-                <div>
-                  <h3>Judgment</h3>
-                  <p data-i18n="mission_judgment">一点判断</p>
-                </div>
-              </article>
-              <article>
-                <span>99</span>
-                <div>
-                  <h3>Generation</h3>
-                  <p data-i18n="mission_generation">大量生成</p>
-                </div>
-              </article>
-              <article>
-                <span>∞</span>
-                <div>
-                  <h3>Beautiful Chaos</h3>
-                  <p data-i18n="mission_chaos">堆成山</p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="control-panel" aria-label="vibe coding 一把梭操作台">
-            <div class="panel-head">
-              <span data-i18n="toolbox_title">Vibe Coding工具箱</span>
-            </div>
-            <div class="control-grid">
-              <article class="control-item">
-                <span class="status hot">YOLO</span>
-                <div>
-                  <h3 data-i18n="yolo_title">写完直接上</h3>
-                  <p data-i18n="yolo_body">线上才是真正的单元测试。</p>
-                </div>
-              </article>
-              <article class="control-item">
-                <span class="status">ALL</span>
-                <div>
-                  <h3 data-i18n="accept_title">一路 accept</h3>
-                  <p data-i18n="accept_body">人类负责点头，Agent 负责留案底。</p>
-                </div>
-              </article>
-              <article class="control-item">
-                <span class="status ok">LUCK</span>
-                <div>
-                  <h3 data-i18n="luck_title">测试靠缘分</h3>
-                  <p data-i18n="luck_body">绿了是实力，红了是环境。</p>
-                </div>
-              </article>
-              <article class="control-item">
-                <span class="status warn">UNDO</span>
-                <div>
-                  <h3 data-i18n="rollback_title">炸了就回滚</h3>
-                  <p data-i18n="rollback_body">回滚不是撤退，是二次 prompt。</p>
-                </div>
-              </article>
-              <article class="control-item wide">
-                <span class="status">3X</span>
-                <div>
-                  <h3 data-i18n="agents_title">三开 Agent</h3>
-                  <p data-i18n="agents_body">一个负责冲，一个负责拦，一个负责解释为什么最后还是冲了。</p>
-                </div>
-              </article>
-              <article class="control-item wide">
-                <span class="status calm">DOC</span>
-                <div>
-                  <h3 data-i18n="retro_title">复盘交给 AI</h3>
-                  <p data-i18n="retro_body">锅还热着，复盘已经很体面。</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
     </main>
 
     <footer class="site-footer">
@@ -190,9 +112,9 @@
         <a class="footer-brand-link" href="https://github.com/shitdance" data-i18n="footer_brand">Shit Dance · 屎山跳动</a>
         <span class="footer-org" data-i18n="footer_org">屎山紧急救援委员会（不存在）</span>
       </span>
-      <small data-i18n="footer_note">收集那些听起来很靠谱、结果很离谱的 agent 时刻。</small>
+      <small data-i18n="footer_note">听起来很靠谱，结果很离谱。</small>
     </footer>
     <script>window.SHITDANCE_LOCALES = {"zh":{"doc_home_title":"Shit Dance | 屎山跳动","doc_moments_title":"Moments | Shit Dance","doc_submit_title":"Submit | Shit Dance","brand_primary":"屎山跳动","brand_secondary":"Shit Dance","nav_home":"首页","nav_moments":"翻车舞池","nav_featured":"精选","nav_issues":"投稿","hero_title":"Agentic genius is","hero_stat_one":"judgment and","hero_stat_two":"agent-generated","hero_note":"Agentic 天才，是 1% 的判断，加 99% 的 Agent 屎山。","hero_cta":"看 Agent 如何把你接住","terminal_catch":"我会在这里把你接住","terminal_cut":"这一刀我们砍在测试假设上","mission_label":"Mission","mission_title":"Make technical debt move gracefully.","mission_subtitle":"使命：让技术债优雅地动起来。","mission_judgment":"一点判断","mission_generation":"大量生成","mission_chaos":"堆成山","toolbox_title":"Vibe Coding工具箱","yolo_title":"写完直接上","yolo_body":"线上才是真正的单元测试。","accept_title":"一路 accept","accept_body":"人类负责点头，Agent 负责留案底。","luck_title":"测试靠缘分","luck_body":"绿了是实力，红了是环境。","rollback_title":"炸了就回滚","rollback_body":"回滚不是撤退，是二次 prompt。","agents_title":"三开 Agent","agents_body":"一个负责冲，一个负责拦，一个负责解释为什么最后还是冲了。","retro_title":"复盘交给 AI","retro_body":"锅还热着，复盘已经很体面。","moments_page_title":"翻车舞池","moments_page_intro":"收录 AI coding agent 最自信也最离谱的翻车瞬间。","moments_page_cta":"投稿","submit_page_label":"Submit","submit_page_title":"把翻车现场送上台","submit_page_intro":"推荐用 skill 生成可公开 Moment；不想安装就走 Issue 表单。","submit_skill_label":"Recommended","submit_skill_title":"安装 shitdance-confess","submit_skill_body":"安装或适配后，把 agent 翻车材料交给 $shitdance-confess。BTW：它也可以严肃分析你遇到的 agent 问题，并给出改进方案。","submit_agent_select_label":"选择你的 agent","submit_agent_prompt_label":"2. 使用","submit_skill_url_label":"1. 下载/安装包","submit_agent_prompt_codex":"直接调用 $shitdance-confess，或者输入唤醒词：shitdance please","submit_agent_prompt_claude":"直接调用 Shit Dance Confess，或者输入唤醒词：shitdance please","submit_agent_prompt_cursor":"直接调用 Shit Dance Confess rule，或者输入唤醒词：shitdance please","submit_agent_prompt_generic":"直接调用 Shit Dance Confess，或者输入唤醒词：shitdance please","submit_issue_label":"No install","submit_issue_title":"不装也能投稿","submit_issue_body":"如果 skill 安装这件事已经开始像另一个事故现场，就直接用 GitHub Issue 表单，按表单填就行。","submit_issue_cta":"打开 Issue 表单","featured_home_label":"Featured","featured_home_title":"精选翻车","featured_home_intro":"先看最值得围观的几次。","featured_home_cta":"查看全部精选","featured_read_more":"查看更多","featured_page_title":"精选","featured_page_intro":"被标记为精选的 Shit Dance Moment。","pagination_previous":"上一页","pagination_next":"下一页","back_to_moments":"返回翻车现场","section_slogan":"Agent 口头禅","section_failure_scene":"翻车现场","section_original_context":"当时的背景","section_lesson":"留下的教训","submitted_by":"submitted by","footer_brand":"Shit Dance · 屎山跳动","footer_org":"屎山紧急救援委员会（不存在）","footer_note":"听起来很靠谱，结果很离谱。","toggle_label":"EN","toggle_aria":"Switch to English"},"en":{"doc_home_title":"Shit Dance","doc_moments_title":"Moments | Shit Dance","doc_submit_title":"Submit | Shit Dance","brand_primary":"Shit Dance","brand_secondary":"","nav_home":"Home","nav_moments":"Dance Floor","nav_featured":"Featured","nav_issues":"Submit","hero_title":"Agentic genius is","hero_stat_one":"judgment and","hero_stat_two":"agent-generated","hero_note":"","hero_cta":"See how agents catch you","terminal_catch":"I will catch you right here","terminal_cut":"This cut lands on the test assumptions","mission_label":"Mission","mission_title":"Make technical debt move gracefully.","mission_subtitle":"","mission_judgment":"a little judgment","mission_generation":"a lot of generation","mission_chaos":"stacked into a mountain","toolbox_title":"Vibe Coding Kit","yolo_title":"Ship it live","yolo_body":"Production is the real unit test.","accept_title":"Accept all","accept_body":"Humans nod. Agents leave evidence.","luck_title":"Tests by fate","luck_body":"Green is skill. Red is environment.","rollback_title":"Rollback, then prompt","rollback_body":"A rollback is not retreat. It is prompt v2.","agents_title":"Three agents open","agents_body":"One rushes, one blocks, one explains why it still rushed.","retro_title":"AI writes the retro","retro_body":"The incident is hot. The write-up is already elegant.","moments_page_title":"Moments","moments_page_intro":"Confident AI coding agent moments that went sideways.","moments_page_cta":"Submit a Moment","submit_page_label":"Submit","submit_page_title":"Send the scene onstage","submit_page_intro":"Use the skill for a public Moment, or use the Issue form without installing anything.","submit_skill_label":"Recommended","submit_skill_title":"Install shitdance-confess","submit_skill_body":"After installing or adapting it, give the agent failure to $shitdance-confess. BTW: it can also seriously analyze the agent problem you hit and give you a concrete improvement plan.","submit_agent_select_label":"Choose your agent","submit_agent_prompt_label":"2. Use","submit_skill_url_label":"1. Download / install package","submit_agent_prompt_codex":"Call $shitdance-confess directly, or type the wake phrase: shitdance please","submit_agent_prompt_claude":"Call Shit Dance Confess directly, or type the wake phrase: shitdance please","submit_agent_prompt_cursor":"Call the Shit Dance Confess rule directly, or type the wake phrase: shitdance please","submit_agent_prompt_generic":"Call Shit Dance Confess directly, or type the wake phrase: shitdance please","submit_issue_label":"No install","submit_issue_title":"Submit without the skill","submit_issue_body":"If installing a skill already feels like another incident, use the GitHub Issue form and follow the fields there.","submit_issue_cta":"Open Issue form","featured_home_label":"Featured","featured_home_title":"Featured moments","featured_home_intro":"Start with the ones most worth watching.","featured_home_cta":"View all featured","featured_read_more":"Read more","featured_page_title":"Featured","featured_page_intro":"Selected Shit Dance moments from the public record.","pagination_previous":"Previous","pagination_next":"Next","back_to_moments":"Back to Moments","section_slogan":"Agent slogan","section_failure_scene":"Failure scene","section_original_context":"What was happening","section_lesson":"What it taught us","submitted_by":"submitted by","footer_brand":"Shit Dance","footer_org":"Agentic Emergency Response Office (not real)","footer_note":"Sounded right. Went sideways.","toggle_label":"CN","toggle_aria":"Switch to Chinese"}};</script>
-    <script src="./assets/site.js"></script>
+    <script src="../assets/site.js"></script>
   </body>
 </html>

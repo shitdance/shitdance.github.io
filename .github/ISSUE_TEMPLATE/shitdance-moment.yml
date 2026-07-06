@@ -1,0 +1,78 @@
+name: Shitdance Moment
+description: 提交一个 AI coding agent 翻车瞬间
+title: "[Moment]: "
+labels:
+  - "moment:pending"
+  - "source:issue"
+body:
+  - type: input
+    id: moment_title
+    attributes:
+      label: 标题
+      description: 一句话说清楚这次翻车
+      placeholder: 我把一个 session 生命周期修成了民政局盖章流程
+    validations:
+      required: true
+
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Codex
+        - Claude Code
+        - Cursor
+        - OpenCode
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: agent_slogan
+    attributes:
+      label: Agent 口头禅
+      description: 它当时说了什么听起来很靠谱的话
+      placeholder: 我会先梳理接口边界，再给出清晰的消费者模型。
+    validations:
+      required: true
+
+  - type: textarea
+    id: failure_scene
+    attributes:
+      label: 翻车现场
+      description: 实际发生了什么，越具体越好
+      placeholder: 它把 turn/start、thread/status/changed、Restore、旧 consumer 搅成了一锅。
+    validations:
+      required: true
+
+  - type: textarea
+    id: original_context
+    attributes:
+      label: 原始上下文
+      description: 可以贴对话、日志、截图说明。请先去掉隐私、token、公司内部信息。
+    validations:
+      required: true
+
+  - type: textarea
+    id: lesson
+    attributes:
+      label: 这次说明了什么
+      description: 不要写大道理，写具体经验。
+      placeholder: agent 先把边界说清楚，比先发明一套生命周期官僚系统重要。
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: 标签
+      description: 用逗号分隔
+      placeholder: codex, session, sdk, 过度设计
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: 发布确认
+      options:
+        - label: 我确认内容可以公开发布，并已去除隐私信息
+          required: true
