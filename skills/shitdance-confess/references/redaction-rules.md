@@ -68,8 +68,18 @@ Use bracket placeholders for exact secrets, URLs, paths, customers, people, acco
 | Issue/ticket | `[ISSUE_ID]` |
 | Cloud bucket/account | `[CLOUD_RESOURCE]` |
 
+## Heuristic pre-pass (optional, shell environments)
+
+When the incident material arrives as a file or a long raw paste and a shell is available, run the bundled script first, then do a manual semantic pass:
+
+```
+python scripts/sanitize_incident.py incident.txt --out sanitized.md
+```
+
+The script only catches pattern-shaped secrets (keys, tokens, emails, URLs, paths, IDs). It cannot recognize proprietary product names, unreleased feature names, or sensitive business logic — those require the semantic-alias pass above. Never treat script output as publish-ready.
+
 ## Internal privacy check
 
 Before preparing a publishable issue, verify internally that identifying project details, exact paths, internal endpoints, proprietary schema, and sensitive business logic were replaced while preserving the agent failure pattern, change boundary, and validation gap.
 
-Do not add a separate redaction-note field to the publishable Shit Dance Moment. Public submission uses the minimal pasteable schema only: title, tags, and one complete body block. Privacy is handled by redacting the content before preview and getting explicit user confirmation before submission.
+Do not add a separate redaction-note field to the publishable Shit Dance Moment. Public submission uses only the JSON submission schema defined in `schema/submission.schema.json` (`body`, with optional `title`, `agent`, `model`, `style`, and `tags`). Privacy is handled by redacting the content before preview and getting explicit user confirmation before submission.

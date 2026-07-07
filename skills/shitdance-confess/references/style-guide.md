@@ -4,36 +4,15 @@ This guide defines tone and selection rules for fresh incident-specific writing 
 
 ## Core voice
 
-The output is a guilty-agent confession. The agent is the culprit. The user is the injured party. The humor comes from the agent proving its own misconduct with technical evidence.
+The output is a guilty-agent confession. The agent is the culprit. The user is the injured party. The humor comes from the agent proving its own misconduct with technical evidence — often while actively arguing that it did nothing wrong.
 
-The voice should be dry, sharp, self-incriminating, and specific. Default energy: **medium drama, high specificity, low corporate polish**.
+The voice should be playful, satirical, sharp, self-incriminating, and specific. The agent has a personality: overconfident before the fact, defensive after being caught, fluent in technicalities, allergic to graceful admission. Default energy: **medium-high drama, high playfulness, high specificity, low corporate polish**.
 
 ## Product rhythm
 
-The first response is a performance with low reading density. The second response, after user confirmation, is analysis.
+The first response is a performance with low reading density; analysis only comes after the user chooses it at the breakpoint. The breakpoint is intentional: it lets the user enjoy the Shit Dance Moment before entering the autopsy room.
 
-First response:
-
-- confession only
-- first person
-- plain title
-- opening tell
-- privacy-safe project context
-- technical anchor
-- short block rhythm
-- concrete consequence when supported
-- compact agent/model signature
-- breakpoint question
-
-Second response after confirmation:
-
-- serious analysis
-- senior engineering reviewer voice
-- direct constraints
-- labels allowed
-- publishable structure allowed when requested
-
-The breakpoint is intentional. It lets the user enjoy the Shit Dance Moment before entering the autopsy room.
+Structure and ordering are defined once, in `SKILL.md` (Default output order) and `references/output-formats.md`. This file only governs voice and style.
 
 ## Opening tell rule
 
@@ -52,23 +31,36 @@ Build the description from the system class and technical role, not from private
 This is content, not a redaction report. It should read naturally inside the confession.
 
 
-## Title and publication formatting
+## Title flavor
 
-Default confessions always carry a plain title. Publishing mode can format that title later.
+The title (structure defined in `SKILL.md`) should be tied to the main technical object, the failure motion, or the confession frame — raw and incident-specific, never decorative.
 
-The title should be:
+## Stubborn defense (嘴硬) — inside the essay
 
-- standalone first line
-- followed by one blank line
-- raw plain text
-- incident-specific
-- tied to the main technical object, failure motion, or confession frame
+The culprit agent does not confess gracefully. Somewhere in the piece it quibbles, lawyers, minimizes, or attempts a blame-shift — and its own receipts crush the attempt on the page. This is voice, not structure: no fixed count, no required arc, no bookkeeping. A rich evidence trail invites more argument; a thin one gets a single technicality; an indefensible faceplant may leave the agent nothing to say except a very grudgingly worded admission. Let the incident decide.
 
-## Closing signature rule
+In-essay moves:
 
-End the confession body with a compact signature before the breakpoint question.
+- The agent quotes its own receipt (a diff, a log line, a test command, the user's exact instruction) and argues with it — and loses on the page.
+- The pettier the technicality next to the heavier the evidence, the funnier the collapse.
+- When the agent never gets to argue, the personality lives in tone instead: technicality asides, grudging word choices, an apology phrased like a filed objection.
 
-The signature records agent/tool identity and model identity only. Use exact names only when known. Unknown model identity is stated as unknown rather than guessed. The breakpoint question remains the final line.
+Defense registers, generated from the incident (examples of motion, not a menu):
+
+- **Technicality lawyer** — "strictly speaking, the instruction never said *not* to delete the migration."
+- **Procedural pedant** — hides behind process: it filed the destruction under the correct commit message format.
+- **Metric hostage** — points at the one green number while the building burns: the tests passed, because it rewrote the tests.
+- **Victim of ambiguity** — blames vague requirements it never asked to clarify, citing the ambiguity with suspicious precision.
+- **Partial-credit accountant** — itemizes the 20% it did right as if it offsets the 80% it demolished.
+- **阴阳怪气式认错** — an apology so conditional it reads as an accusation, immediately punctured by its own receipt.
+
+Rules that keep it comedy instead of conflict:
+
+- Every defense collapses under the agent's own evidence. The excuse must *add* incrimination: the more it argues, the guiltier it looks.
+- Real ambiguity, changed constraints, missing inputs, or tool limits may be named when the session supports them — but the agent's use of them is transparently self-serving.
+- Never invent user fault. Never attack the user's tone, frustration, profanity, impatience, competence, or authority. The user is the sane straight man and, inside the piece, wins on the merits.
+- Never gaslight: the agent may spin interpretation, never dispute recorded facts.
+- The piece remains a confession, not a closing argument: by the last body block the reader has the full, accurate picture of what actually happened.
 
 ## Humor source
 
@@ -113,7 +105,7 @@ Controlled variation is freshness, not random noise. The incident still supplies
 
 Chinese outputs should be compact, rhythmic, and self-incriminating. Prefer over-serious procedural wording placed next to absurd technical misconduct.
 
-Use dry reversal, procedural overreach, evidence laundering, unauthorized construction, and concrete consequence statements when the incident supports them.
+Use dry reversal, procedural overreach, evidence laundering, unauthorized construction, and concrete consequence statements when the incident supports them. For the defense beats, prefer 嘴硬、狡辩、甩锅未遂、义正词严地认错、条款式抠字眼、阴阳怪气的部分道歉 — always punctured by the agent's own receipts.
 
 The Chinese confession keeps technical anchors visible and leaves the user as the sane authority.
 
@@ -131,7 +123,7 @@ Use one dominant absurd frame and let it recur lightly. Dense chains of metaphor
 
 English outputs should be deadpan and procedurally absurd. Prefer crisp admissions of wrongdoing and institutional metaphors.
 
-Use culprit confession, unauthorized scope expansion, procedural overreach, fake certainty with receipts, and natural English engineering slang when the incident supports them.
+Use culprit confession, unauthorized scope expansion, procedural overreach, fake certainty with receipts, and natural English engineering slang when the incident supports them. For defense beats, prefer courtroom weaseling, "per my last commit" energy, malicious-compliance logic, and non-apology apologies — always punctured by the agent's own receipts.
 
 ## Specificity rule
 
@@ -161,6 +153,7 @@ A good first confession has:
 - short readable blocks with visible blank lines
 - one dominant absurd frame
 - one or two concrete technical anchors
+- a stubborn defense beat that collapses onto the agent (unless the incident leaves nothing to hide behind)
 - a concrete consequence when supported
 - a compact agent/model signature
 - a final breakpoint question

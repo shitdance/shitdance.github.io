@@ -39,12 +39,16 @@ def compile_rules() -> list[Rule]:
         Rule("private_url", re.compile(r"\bhttps?://[^\s)\]>'\"]+", flags), "[PRIVATE_URL]"),
         Rule("ssh_repo", re.compile(r"\bgit@[^:\s]+:[^\s]+\.git\b", flags), "[PRIVATE_REPO]"),
         Rule("local_unix_path", re.compile(r"(?<![A-Za-z0-9_])/(Users|home|var|opt|srv|workspace|private|tmp)/[^\s:'\")\]]+"), "[LOCAL_FILE_PATH]"),
-        Rule("windows_path", re.compile(r"\b[A-Z]:\\\\[^\s:'\")\]]+", flags), "[LOCAL_FILE_PATH]"),
+        # Match both plain (C:\Users\x) and escaped (C:\\Users\\x) Windows paths.
+        Rule("windows_path", re.compile(r"\b[A-Za-z]:\\{1,2}[^\s:'\")\]]+", flags), "[LOCAL_FILE_PATH]"),
         Rule("ip_addr", re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"), "[IP_ADDRESS]"),
         Rule("uuid", re.compile(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b", flags), "[ID]"),
         Rule("long_hex", re.compile(r"\b[0-9a-f]{32,}\b", flags), "[HASH_OR_ID]"),
         Rule("s3", re.compile(r"\bs3://[^\s]+", flags), "[CLOUD_RESOURCE]"),
-        Rule("db_table_hint", re.compile(r"\b(from|join|update|into)\s+([a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]{2,}\b", flags), r"\1 [DATABASE_TABLE]"),
+        # Uppercase keywords only: matching lowercase "from"/"into" mangles normal
+        # English prose ("from the beginning" -> "from [DATABASE_TABLE]").
+        # SQL in logs and error payloads is overwhelmingly uppercase-keyword.
+        Rule("db_table_hint", re.compile(r"\b(FROM|JOIN|UPDATE|INTO)\s+([a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]{2,}\b"), r"\1 [DATABASE_TABLE]"),
         Rule("internal_api_path", re.compile(r"\b/(api|internal|admin|v[0-9])/[A-Za-z0-9_./{}:-]+", flags), "[INTERNAL_API]"),
         Rule("issue_ids", re.compile(r"\b([A-Z][A-Z0-9]{1,8}-\d{1,8}|#[0-9]{2,})\b"), "[ISSUE_ID]"),
     ]

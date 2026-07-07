@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shitdance.com/skills/shitdance-confess/schema/moment.schema.json",
+  "title": "Shit Dance Published Moment",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title",
+    "slug",
+    "status",
+    "body"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "slug": { "type": "string", "minLength": 1 },
+    "datetime": { "type": "string", "minLength": 1 },
+    "agent": { "type": "string" },
+    "model": { "type": "string", "minLength": 1 },
+    "style": { "type": "string", "minLength": 1 },
+    "source": { "type": "string" },
+    "source_issue": { "type": ["integer", "string"] },
+    "source_url": { "type": "string" },
+    "submitted_by": { "type": "string" },
+    "status": { "type": "string", "enum": ["published"] },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "body": { "type": "string", "minLength": 1 },
+    "featured": { "type": "boolean" },
+    "headline": { "type": "boolean" }
+  }
+}
