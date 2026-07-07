@@ -21,7 +21,7 @@
     "style": { "type": "string", "minLength": 1 },
     "source": { "type": "string" },
     "source_issue": { "type": ["integer", "string"] },
-    "source_url": { "type": "string" },
+    "source_url": { "type": "string", "pattern": "^https?://" },
     "submitted_by": { "type": "string" },
     "status": { "type": "string", "enum": ["published"] },
     "tags": {

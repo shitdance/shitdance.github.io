@@ -40,8 +40,10 @@
     });
 
     document.querySelectorAll("[data-lang-toggle]").forEach((toggle) => {
-      toggle.textContent = dictionary.toggle_label || "";
+      const label = dictionary.toggle_label || "";
+      toggle.innerHTML = `<span class="lang-toggle-icon" aria-hidden="true">🌐</span><span class="lang-toggle-code">${label}</span>`;
       toggle.setAttribute("aria-label", dictionary.toggle_aria || "");
+      toggle.setAttribute("title", dictionary.toggle_aria || "");
     });
 
     storage.set(lang);

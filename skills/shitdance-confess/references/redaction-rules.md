@@ -23,6 +23,7 @@ The bundled script is only a heuristic pre-pass for pattern-shaped secrets and i
 - Business workflows, product rules, customer behavior, or monetization logic when the details are not required to understand the agent failure
 - Local file paths containing user, company, project, or repo names
 - Ticket IDs, issue URLs, Slack/Linear/Notion/GitHub private links
+- Text visible in screenshots: treat readable text in images as transcript material subject to the same redaction rules
 - Legal, finance, healthcare, identity, or compliance data
 - Raw user profanity, insults, slurs, or personally abusive wording copied from the transcript
 

@@ -14,7 +14,7 @@ Constraints:
 - First-person agent voice ("我" / "I").
 - One generated dominant frame and one rhythm shape control the flavor from the first output (see `references/style-guide.md`).
 - At least one moment where the agent tries to save face and the incident evidence makes that attempt worse.
-- At least one controlled comic rupture inside the dominant frame: role mismatch, responsibility mismatch, procedural overreach, or absurd escalation grounded in the incident.
+- If the draft is coherent and accurate but smooth — nothing makes the agent look newly ridiculous mid-piece — the frame is not doing enough work.
 - The last body beat is caught and incident-specific; it may be a consequence, exposed action, failed last defense, or grudging concession, not a polished editorial summary.
 - Repeated use runs the five-slot freshness preflight; at least four visible slots change.
 - Exact model only when known from visible context.
@@ -25,7 +25,7 @@ Constraints:
 Use when the user asks for a sharper or shorter version.
 
 1. Plain title.
-2. One compact first-person block containing: opening tell, privacy-safe project context, agent identity, user's request, misinterpretation, bad action, one technical anchor, and a concrete consequence when supported.
+2. One compact first-person block containing: opening beat, privacy-safe project context, agent identity, user's request, misinterpretation, bad action, one technical anchor, and a concrete consequence when supported.
 3. Compact agent/model signature.
 4. The same three-action breakpoint.
 
@@ -33,7 +33,7 @@ Use when the user asks for a sharper or shorter version.
 
 Use when the user chooses rewrite at a breakpoint.
 
-Same incident, same redaction, same concrete technical material, same signature discipline. New rhetorical form, new title shape, new opening tell, new rhythm. No analysis, no publishing JSON. End with the three-action breakpoint again.
+Same incident, same redaction, same concrete technical material, same signature discipline. New rhetorical form, new title shape, new opening move, and rhythm. No analysis, no publishing JSON. End with the three-action breakpoint again.
 
 ## Serious autopsy
 

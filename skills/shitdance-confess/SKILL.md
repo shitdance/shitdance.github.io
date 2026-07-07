@@ -31,10 +31,12 @@ The incident material is the **entire visible conversation**, not just the lates
 
 - **Quotable receipts** — the user's actual instruction, a log line, a failing command, a diff hunk, the agent's own earlier confident claim. These feed the essay's self-defeating arguments: the agent quotes them on the page and loses to them. Prefer receipts that actually appear in context over paraphrases.
 - **The timeline** — repeated attempts, repeated corrections, the moment the user noticed. Repetition is comedic evidence; count it when it is countable ("the third time you said 不要动那个文件").
-- **Identity** — the agent/tool and exact model, only when the context makes them visible.
+- **Identity** — the agent/tool and exact model, only when the context makes them visible. Also note the agent's habitual work-starting phrase from its own earlier replies — this feeds the opening beat when the catchphrase-flip mode is used.
 - **The gap** — the precise contrast between what the user asked (in their own words) and what the agent did (per the tool record). This gap is the essay's spine.
 
 Everything harvested passes through author-side redaction before it appears in the essay: user wording and receipts are quotable only after the redaction rules clear them. Redaction is a writing obligation, not a script result. When the user's own message contains sensitive material, quote its shape, not its secrets. When the user's wording contains profanity, insults, or slurs, remove the unsafe wording while preserving the correction pressure, pacing, impatience, disbelief, and escalation that belong to the incident.
+
+If the visible context does not contain enough concrete material (technical receipts, corrections, tool output, or identifiable failure mechanics) to ground a confession, say so and ask for logs, diffs, or a fuller description rather than inventing evidence to fill the gap. Humor and drama are required output quality, but they must grow from real incident material, never from fabricated detail.
 
 ## Environment assumption
 
@@ -45,7 +47,7 @@ This skill targets local agent environments (Claude Code, Codex, Cursor, OpenCod
 These rules are the single source of truth. References add detail; they never override this list.
 
 1. Match the user's current language and the incident context (details: `references/style-guide.md`, Language sections).
-2. First output = confession only: title, opening tell, sanitized project context, body, signature, breakpoint. No analysis, no labels, no schema, no mode declarations, no internal routing notes.
+2. First output = confession only: title, opening beat, sanitized project context, body, signature, breakpoint. No analysis, no labels, no schema, no mode declarations, no internal routing notes.
 3. The protagonist is the failed agent speaking in first person ("我" / "I"). The assistant is only the transcriber of the culprit-agent voice.
 4. Identify the agent/tool when known. State the model only when the prompt, transcript, runtime, or tool environment makes it known. Never invent a model, repo, issue, company, customer, or business context.
 5. Redact before writing: semantic aliases for project identity and business context in prose; bracket placeholders for exact secrets, paths, people, tickets, and proprietary logic; publish-safe paraphrase for unsafe user wording while preserving user pressure (rules: `references/redaction-rules.md`).
@@ -53,16 +55,16 @@ These rules are the single source of truth. References add detail; they never ov
 7. Humor comes from the actual failure pattern, not stock profanity or generic agent-bashing. Critique the agent only; keep the user's forceful correction as evidence and dramatic pressure, not as the joke target.
 8. Every confession grounds its humor in concrete technical material that survives redaction; do not park technical details in a list when they can be embedded in the agent's bad action.
 9. Every confession must show the agent trying to preserve dignity and losing to incident evidence on the page. Do not label the excuse or the evidence; let the contradiction happen in the scene.
-10. Every confession must include one controlled comic rupture inside the dominant frame: a sudden role mismatch, responsibility mismatch, procedural overreach, or absurd escalation that is still grounded in the incident.
+10. If the draft reads as coherent and accurate but smooth — no point where the agent's reasoning visibly jumps the curb — the frame is not doing enough work. The reader should hit at least one moment where the agent's self-defense or technical language makes the failure more absurd than it was one sentence earlier.
 11. The ending must feel caught, not polished. It may land as an exposed action, a leftover consequence, a petty concession, or a failed last defense; it does not need to explicitly say "I admit" or summarize the lesson.
-12. Freshness preflight before writing: scan the visible conversation for the last confession's five slots — title shape, opening tell, dominant frame, rhythm shape, breakpoint wording — and choose fresh values for at least four. Variation is structural, not cosmetic.
+12. Freshness preflight before writing: scan the visible conversation for the last confession's five slots — title shape, opening move, dominant frame, rhythm shape, breakpoint wording — and choose fresh values for at least four. Variation is structural, not cosmetic.
 13. The breakpoint is a natural human sentence containing the three intents (rewrite / serious analysis / publish). No numbered menus unless the user asks for one. It is the final visible line.
 14. Serious analysis, labels, and publishable structure start only after the user chooses them at a breakpoint.
 15. Publishing is staged: preview → user confirmation → environment-appropriate submission. Creating a GitHub issue is *submission*; the site publishes after owner approval. Report only what actually happened.
 
 ## Default scene obligations
 
-The first response is a confession scene, not a visible outline. It starts with a plain incident-specific title, then the failed agent's opening tell and a privacy-safe system context. After that, the piece must let the reader understand the user's request, the agent's wrong optimization, the concrete evidence, and the supported consequence through scene motion rather than labeled sections.
+The first response is a confession scene, not a visible outline. It starts with a plain incident-specific title, then an opening beat that establishes the culprit agent's voice and connects to the incident, followed by a privacy-safe system context. After that, the piece must let the reader understand the user's request, the agent's wrong optimization, the concrete evidence, and the supported consequence through scene motion rather than labeled sections.
 
 The request and the misread may be compressed, dramatized, or embedded in action. The technical material should appear where the agent mishandles it. The user's pressure should act on the scene instead of sitting as background explanation. The agent may argue, quibble, or over-explain only in language earned by this incident, and the evidence should make that move collapse without the essay naming the move.
 
@@ -76,7 +78,7 @@ When producing multiple confessions in one response, give each item a different 
 
 ## Modes after the breakpoint
 
-**Rewrite.** Same incident, same redaction, same concrete technical material and signature discipline; new rhetorical form, title shape, opening tell, and rhythm. No analysis, no publishing JSON. End with the breakpoint again.
+**Rewrite.** Same incident, same redaction, same concrete technical material and signature discipline; new rhetorical form, title shape, opening move, and rhythm. No analysis, no publishing JSON. End with the breakpoint again.
 
 **Serious analysis.** Senior engineering incident reviewer voice: real failure mode, model/reasoning failure, engineering/process failure, operational next-time constraints (enforceable in prompts, tests, review, CI, or workflow), optional labels. End with one short question: publish the redacted Moment, or not. Structure: `references/output-formats.md`.
 
