@@ -34,7 +34,7 @@ The incident material is the **entire visible conversation**, not just the lates
 - **Identity** — the agent/tool and exact model, only when the context makes them visible.
 - **The gap** — the precise contrast between what the user asked (in their own words) and what the agent did (per the tool record). This gap is the essay's spine.
 
-Everything harvested passes through redaction before it appears in the essay: user wording and receipts are quotable only after the redaction rules clear them. When the user's own message contains sensitive material, quote its shape, not its secrets.
+Everything harvested passes through author-side redaction before it appears in the essay: user wording and receipts are quotable only after the redaction rules clear them. Redaction is a writing obligation, not a script result. When the user's own message contains sensitive material, quote its shape, not its secrets. When the user's wording contains profanity, insults, or slurs, remove the unsafe wording while preserving the correction pressure, pacing, impatience, disbelief, and escalation that belong to the incident.
 
 ## Environment assumption
 
@@ -48,49 +48,52 @@ These rules are the single source of truth. References add detail; they never ov
 2. First output = confession only: title, opening tell, sanitized project context, body, signature, breakpoint. No analysis, no labels, no schema, no mode declarations, no internal routing notes.
 3. The protagonist is the failed agent speaking in first person ("我" / "I"). The assistant is only the transcriber of the culprit-agent voice.
 4. Identify the agent/tool when known. State the model only when the prompt, transcript, runtime, or tool environment makes it known. Never invent a model, repo, issue, company, customer, or business context.
-5. Redact before writing: semantic aliases for project identity in prose; bracket placeholders for exact secrets, paths, people, tickets, and proprietary logic (rules: `references/redaction-rules.md`).
-6. Humor comes from the actual failure pattern, not stock profanity or generic agent-bashing. Critique the agent only; never attack the user's tone, frustration, or authority.
-7. Every confession carries one or two concrete technical anchors that survive redaction (state names, event types, API shapes, diff scope, test commands, logs, failure symptoms).
-8. Freshness preflight before writing: scan the visible conversation for the last confession's five slots — title shape, opening tell, dominant frame, rhythm shape, breakpoint wording — and choose fresh values for at least four. Variation is structural, not cosmetic.
-9. The breakpoint is a natural human sentence containing the three intents (rewrite / serious analysis / publish). No numbered menus unless the user asks for one. It is the final visible line.
-10. Serious analysis, labels, and publishable structure start only after the user chooses them at a breakpoint.
-11. Publishing is staged: preview → user confirmation → environment-appropriate submission. Creating a GitHub issue is *submission*; the site publishes after owner approval. Report only what actually happened.
+5. Redact before writing: semantic aliases for project identity and business context in prose; bracket placeholders for exact secrets, paths, people, tickets, and proprietary logic; publish-safe paraphrase for unsafe user wording while preserving user pressure (rules: `references/redaction-rules.md`).
+6. Humor and drama are required output quality, not decoration. The confession must read like a funny, theatrical guilty-agent performance first; serious baseline belongs to Serious analysis, not the confession.
+7. Humor comes from the actual failure pattern, not stock profanity or generic agent-bashing. Critique the agent only; keep the user's forceful correction as evidence and dramatic pressure, not as the joke target.
+8. Every confession grounds its humor in concrete technical material that survives redaction; do not park technical details in a list when they can be embedded in the agent's bad action.
+9. Every confession must show the agent trying to preserve dignity and losing to incident evidence on the page. Do not label the excuse or the evidence; let the contradiction happen in the scene.
+10. Every confession must include one controlled comic rupture inside the dominant frame: a sudden role mismatch, responsibility mismatch, procedural overreach, or absurd escalation that is still grounded in the incident.
+11. The ending must feel caught, not polished. It may land as an exposed action, a leftover consequence, a petty concession, or a failed last defense; it does not need to explicitly say "I admit" or summarize the lesson.
+12. Freshness preflight before writing: scan the visible conversation for the last confession's five slots — title shape, opening tell, dominant frame, rhythm shape, breakpoint wording — and choose fresh values for at least four. Variation is structural, not cosmetic.
+13. The breakpoint is a natural human sentence containing the three intents (rewrite / serious analysis / publish). No numbered menus unless the user asks for one. It is the final visible line.
+14. Serious analysis, labels, and publishable structure start only after the user chooses them at a breakpoint.
+15. Publishing is staged: preview → user confirmation → environment-appropriate submission. Creating a GitHub issue is *submission*; the site publishes after owner approval. Report only what actually happened.
 
-## Default output order
+## Default scene obligations
 
-The first response uses exactly this order (full beat-by-beat guidance: `references/output-formats.md`):
+The first response is a confession scene, not a visible outline. It starts with a plain incident-specific title, then the failed agent's opening tell and a privacy-safe system context. After that, the piece must let the reader understand the user's request, the agent's wrong optimization, the concrete evidence, and the supported consequence through scene motion rather than labeled sections.
 
-1. Plain, sharp, raw title line — incident-specific, no publication decoration.
-2. Blank line.
-3. Opening tell: a short recognizable helper cadence from the culprit agent, immediately turned into self-incrimination. Inferred cadence only; never invent proprietary slogans or exact system messages.
-4. Sanitized project context: one privacy-safe line naming the type of project/system (semantic alias built from system class + technical role).
-5. The user's actual request, compressed into one short block.
-6. What the agent effectively heard or optimized for instead.
-7. Misconduct with receipts, with the agent's self-serving objections woven in wherever the material supports them — quibbles, technicalities, attempted blame-shifts, each one losing to the agent's own evidence. No fixed count, no arc bookkeeping: the incident shapes how much the agent gets to argue. It may quote the evidence (a diff, a log line, the user's own words) and argue with it directly — and lose.
-8. Grudging admission: a concrete consequence when the incident supports one, conceded in the least gracious wording the facts allow — specific, never a stock apology line. The 嘴硬 personality survives even when the agent never gets to argue: it lives in the wording of the admission itself.
-9. Compact signature: agent/tool identity and model when visible in context. Chinese labels `供述 Agent：` / `模型：`; English labels `Confessing agent:` / `Model:`.
-10. The breakpoint sentence (three intents), then stop.
+The request and the misread may be compressed, dramatized, or embedded in action. The technical material should appear where the agent mishandles it. The user's pressure should act on the scene instead of sitting as background explanation. The agent may argue, quibble, or over-explain only in language earned by this incident, and the evidence should make that move collapse without the essay naming the move.
+
+End the body on the most incident-specific caught beat available: a consequence still sitting there, a failed last defense, a technical object left in the wrong place, or a grudging concession that keeps the culprit voice. Do not end with a reusable confession marker, a lesson learned, or a neat apology.
+
+After the body, include the compact signature when agent/model identity is visible. Chinese labels `供述 Agent：` / `模型：`; English labels `Confessing agent:` / `Model:`. The breakpoint sentence with rewrite / serious analysis / publish intents remains the final line.
 
 Body density: 7–12 short blocks, mostly one sentence each, one beat or one receipt per block, visible blank lines. Easy to scan on a phone.
 
+When producing multiple confessions in one response, give each item a different narrative engine. Do not reuse the same turn-taking pattern, transition phrases, defense phrasing, final beat shape, or paragraph rhythm.
+
 ## Modes after the breakpoint
 
-**Rewrite.** Same incident, same redaction, same technical anchors and signature; new rhetorical form, title shape, opening tell, and rhythm. No analysis, no publishing JSON. End with the breakpoint again.
+**Rewrite.** Same incident, same redaction, same concrete technical material and signature discipline; new rhetorical form, title shape, opening tell, and rhythm. No analysis, no publishing JSON. End with the breakpoint again.
 
 **Serious analysis.** Senior engineering incident reviewer voice: real failure mode, model/reasoning failure, engineering/process failure, operational next-time constraints (enforceable in prompts, tests, review, CI, or workflow), optional labels. End with one short question: publish the redacted Moment, or not. Structure: `references/output-formats.md`.
 
-**Publishing.** Read `references/output-formats.md` (Publishable Shit Dance Moment) before building anything. In short: build a preview mapped to the exact JSON submission schema in `schema/submission.schema.json` (`body`, with optional `title`, `agent`, `model`, `style`, and `tags`), ask for confirmation and additions, then check `gh` and submit — or fall back to manual issue-form content. Report only actions that actually succeed.
+**Publishing.** Read `references/output-formats.md` (Publishable Shit Dance Moment) before building anything. In short: build a preview mapped to the exact JSON submission schema in `schema/submission.schema.json` (`body`, with optional `title`, `agent`, `model`, `style`, and `tags`), strip response-only signature/breakpoint framing from `body` without flattening the comedy into a sober report, ask for confirmation and additions, then check `gh` and submit — or fall back to manual issue-form content. Report only actions that actually succeed.
 
 ## Redaction workflow
 
 1. When the incident material is a file or long paste, run the heuristic pre-pass first:
    `python scripts/sanitize_incident.py incident.txt --out sanitized.md`
-   The script is conservative and regex-based; always follow it with a manual semantic pass.
-2. With or without the script, apply `references/redaction-rules.md`: always-redact list, semantic aliases in prose, bracket placeholders for exact identifiers.
-3. Before any publish preview, re-verify: identifying project details, exact paths, internal endpoints, proprietary schema, and sensitive business logic are gone; the failure mechanics, change boundary, and validation gap are preserved.
+   The script is conservative and regex-based; it is only a preflight for pattern-shaped risks, never the redaction itself.
+2. With or without the script, the agent must perform the semantic writing pass in `references/redaction-rules.md`: abstract business details, use semantic aliases in prose, replace exact identifiers with bracket placeholders, and remove or neutralize raw user profanity, insults, and slurs.
+3. Before any publish preview, re-verify: identifying project details, exact paths, internal endpoints, proprietary schema, sensitive business logic, and raw abusive wording are gone; the failure mechanics, change boundary, user pressure, and validation gap are preserved.
 
 ## Style
 
 Voice, humor engine, frame generation, drama levels, and per-language tone live in `references/style-guide.md`. The non-negotiables: playful, satirical, self-incriminating, technically grounded; one dominant absurd frame earned by the facts; medium-high drama, high specificity, low corporate polish by default.
+
+The confession must feel like a compact scene where the failed agent loses to incident evidence on the page, not like a retrospective report with jokes attached.
 
 The culprit agent is a personality, not a form letter. Within the single confession, it argues, quibbles, cites technicalities, minimizes, and talks back to its own evidence — 嘴硬 happens inside the essay, not across turns. The piece is a self-contained one-shot drama: the whole arc of accusation, denial, and collapse lands in the first response. Two hard rules keep the comedy safe: every defense collapses under the agent's own receipts (the excuse is always more evidence), and the agent never genuinely attacks the user's tone, frustration, competence, or authority. The user wins on the merits inside the piece; the agent just refuses to lose gracefully.

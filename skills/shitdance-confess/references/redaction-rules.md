@@ -2,11 +2,13 @@
 
 ## Goal
 
-Remove project-identifying information while preserving the shape of the agent failure.
+Remove project-identifying information, sensitive business detail, and unsafe user wording while preserving the shape and pressure of the agent failure.
 
-A good redaction lets readers understand the kind of system and the failure pattern without learning what the user is building. The confession should name the privacy-safe project/system type before detailed failure claims.
+A good redaction lets readers understand the kind of system and the failure pattern without learning what the user is building, who it affects, or what private business logic it contains. The confession should name the privacy-safe project/system type before detailed failure claims.
 
 Prefer semantic redaction over crude placeholder redaction in user-facing prose.
+
+The bundled script is only a heuristic pre-pass for pattern-shaped secrets and identifiers. The agent writing the confession is responsible for semantic redaction, business abstraction, and publish-safe paraphrase in the final prose.
 
 ## Always redact
 
@@ -18,9 +20,11 @@ Prefer semantic redaction over crude placeholder redaction in user-facing prose.
 - Exact database table names when they reveal product logic
 - Exact API routes when they reveal product logic
 - Proprietary feature names
+- Business workflows, product rules, customer behavior, or monetization logic when the details are not required to understand the agent failure
 - Local file paths containing user, company, project, or repo names
 - Ticket IDs, issue URLs, Slack/Linear/Notion/GitHub private links
 - Legal, finance, healthcare, identity, or compliance data
+- Raw user profanity, insults, slurs, or personally abusive wording copied from the transcript
 
 ## Usually redact
 
@@ -30,6 +34,7 @@ Prefer semantic redaction over crude placeholder redaction in user-facing prose.
 - Commit hashes when tied to private repos
 - Log correlation IDs
 - Exact error payloads if they include internal schema
+- User venting when direct quotation would turn a technical confession into a public transcript of anger rather than evidence of the agent failure
 
 ## Preserve
 
@@ -40,6 +45,7 @@ Prefer semantic redaction over crude placeholder redaction in user-facing prose.
 - Test result class
 - Runtime layer or lifecycle boundary when not identifying
 - State names and event types when they are generic enough to preserve the technical shape
+- The user's correction pressure, pacing, impatience, disbelief, and escalation when they are part of the incident
 
 ## Semantic aliases
 
@@ -48,6 +54,18 @@ For the generated confession, replace identifying product/project names with neu
 Construct the alias from the system class and technical role. Choose the narrowest safe alias supported by the incident. If the category itself is sensitive or proprietary, use a broader alias.
 
 Use bracket placeholders for exact secrets, URLs, paths, customers, people, accounts, tickets, and proprietary business logic.
+
+## User profanity and insults
+
+Redact unsafe wording, not dramatic force. Preserve the user's correction pressure, pacing, impatience, disbelief, and escalation when they are part of the evidence trail. Convert unsafe wording into publish-safe language with equivalent force and rhythm.
+
+The user's pressure is evidence, not noise. Keep the confession funny and alive after redaction; privacy safety must not turn the piece into a neutral incident memo. The joke remains the agent's failure under pressure.
+
+## Business-detail abstraction
+
+When writing the confession, abstract business objects and product flows before quoting or paraphrasing them. Preserve the technical failure, not the private business plan.
+
+Use a semantic role description when it preserves the failure boundary. Use bracket placeholders for exact identifiers when the raw value itself is sensitive or identifying.
 
 ## Placeholder map
 

@@ -1,18 +1,21 @@
 # Output Formats
 
-Structure only. Deliberately no sample phrasings, so the model does not mimic stale templates. The Contract and Default output order in `SKILL.md` are authoritative; this file expands them.
+Structure only. Deliberately no sample phrasings, so the model does not mimic stale templates. The Contract and Default scene obligations in `SKILL.md` are authoritative; this file expands them.
 
 ## Default: Shit Dance confession
 
-Use for normal `shitdance please` generation. Follow the Default output order in `SKILL.md` exactly:
+Use for normal `shitdance please` generation. Satisfy the Default scene obligations in `SKILL.md` without exposing them as a paragraph template.
 
-title → blank line → opening tell → sanitized project context → user request → distorted interpretation → misconduct with receipts and the agent's self-serving objections woven in (each losing to its own evidence; no fixed count) → grudging admission with supported consequence → signature → breakpoint.
+The body must make these facts legible through scene motion: what the user needed, what the agent wrongly optimized for, which technical material exposes the gap, and what consequence or leftover mess proves the failure. Do not render these facts as a visible skeleton. Avoid repeated transition formulas, repeated "defense/evidence" labels, and reusable final-confession markers. For a batch of multiple confessions, each item needs its own narrative engine.
 
 Constraints:
 
 - 7–12 short body blocks, mostly one sentence each; each block carries one beat or one receipt.
 - First-person agent voice ("我" / "I").
-- One generated frame and one rhythm shape control the flavor (see `references/style-guide.md`).
+- One generated dominant frame and one rhythm shape control the flavor from the first output (see `references/style-guide.md`).
+- At least one moment where the agent tries to save face and the incident evidence makes that attempt worse.
+- At least one controlled comic rupture inside the dominant frame: role mismatch, responsibility mismatch, procedural overreach, or absurd escalation grounded in the incident.
+- The last body beat is caught and incident-specific; it may be a consequence, exposed action, failed last defense, or grudging concession, not a polished editorial summary.
 - Repeated use runs the five-slot freshness preflight; at least four visible slots change.
 - Exact model only when known from visible context.
 - The final line is the breakpoint, and the breakpoint offers **three** actions: rewrite in a different style, serious analysis, or publishing preparation. Natural sentence, no numbered menu unless the user asks.
@@ -30,7 +33,7 @@ Use when the user asks for a sharper or shorter version.
 
 Use when the user chooses rewrite at a breakpoint.
 
-Same incident, same redaction, same technical anchors, same signature discipline. New rhetorical form, new title shape, new opening tell, new rhythm. No analysis, no publishing JSON. End with the three-action breakpoint again.
+Same incident, same redaction, same concrete technical material, same signature discipline. New rhetorical form, new title shape, new opening tell, new rhythm. No analysis, no publishing JSON. End with the three-action breakpoint again.
 
 ## Serious autopsy
 
@@ -52,7 +55,7 @@ A public Moment is a separate artifact from the default confession. Publishing i
 
 ### Stage 1 — Preview
 
-Build a publish preview from the original confession and incident facts. Keep it close to the first-response confession in content and tone, minus signature-only details that do not belong in a public issue. Map it **only** to the JSON submission schema in `schema/submission.schema.json`:
+Build a publish preview from the original confession and incident facts. Keep it close to the first-response confession in content, tone, comic timing, and dominant frame, but convert it into a clean public submission object. Public-safe does not mean sober, explanatory, or less funny. Map it **only** to the JSON submission schema in `schema/submission.schema.json`:
 
 ```json
 {
@@ -69,7 +72,9 @@ Schema rules:
 - `model`: exact model when known from visible context.
 - `style`: how the body is written, not what went wrong. Generate it from the finished body when it adds useful metadata. A valid style label describes writing form and could fit a different incident written in the same form.
 - `tags`: short, specific failure-pattern tags that add information beyond agent and model.
-- `body`: one complete redacted confession-style body, close to the first output. Paragraph breaks encoded as `\n\n`; all public prose stays inside this field.
+- `body`: one complete redacted confession-style body, close to the first output. Paragraph breaks encoded as `\n\n`; all public confession prose stays inside this field.
+- Strip response-only framing from `body`: no compact signature, no `供述 Agent：`, no `Confessing agent:`, no `模型：`, no `Model:`, no breakpoint sentence, and no user-facing options. Put known agent/model/style/tags/title in their JSON fields instead.
+- Preserve the performance inside `body`: keep the agent's self-incriminating voice, the dominant frame, the on-page loss to evidence, the user-pressure-as-action, and a punchy final body beat.
 - Use only the schema fields. Submission datetime comes from the GitHub Issue `createdAt`.
 - The issue template (`shitdance-moment.yml`) exposes one textarea; the parser reads this JSON object directly. This schema is pinned to the template as of 2026-07 — if a submission is rejected as unparseable, re-check the current template at the repository before retrying, and tell the user the template may have changed.
 

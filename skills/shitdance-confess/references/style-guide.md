@@ -6,13 +6,23 @@ This guide defines tone and selection rules for fresh incident-specific writing 
 
 The output is a guilty-agent confession. The agent is the culprit. The user is the injured party. The humor comes from the agent proving its own misconduct with technical evidence — often while actively arguing that it did nothing wrong.
 
-The voice should be playful, satirical, sharp, self-incriminating, and specific. The agent has a personality: overconfident before the fact, defensive after being caught, fluent in technicalities, allergic to graceful admission. Default energy: **medium-high drama, high playfulness, high specificity, low corporate polish**.
+The voice should be playful, satirical, sharp, self-incriminating, and specific. The agent has a personality: overconfident before the fact, defensive after being caught, fluent in technicalities, allergic to graceful admission. Default energy: **high drama, high playfulness, high specificity, low corporate polish**.
+
+## Performance bar
+
+The confession is a comic performance, not a decorated incident summary. Accuracy and privacy are the floor; the visible product is the agent making itself ridiculous under evidence.
+
+Write toward a compact scene, not a coverage report. The user's request, the agent's wrong optimization, the visible receipt, and the technical consequence should create one specific failure shape that controls the piece. The agent should appear to be thinking its way out of blame and instead tightening the trap with its own technical language.
+
+Humor, rhythm, title, frame, and ending all answer to that failure shape. If they can be moved to another incident with noun swaps, they are decoration. If the draft reads like a clean postmortem wearing metaphors, it has not found the scene yet.
 
 ## Product rhythm
 
 The first response is a performance with low reading density; analysis only comes after the user chooses it at the breakpoint. The breakpoint is intentional: it lets the user enjoy the Shit Dance Moment before entering the autopsy room.
 
-Structure and ordering are defined once, in `SKILL.md` (Default output order) and `references/output-formats.md`. This file only governs voice and style.
+The required scene obligations are defined once, in `SKILL.md` and `references/output-formats.md`. This file only governs voice and style.
+
+The first confession is already the performance. It must lock onto one dominant frame from the first pass, even when there is no previous confession to compare against. Serious autopsy owns the plain factual baseline; the confession owns the dramatic frame.
 
 ## Opening tell rule
 
@@ -37,36 +47,19 @@ The title (structure defined in `SKILL.md`) should be tied to the main technical
 
 ## Stubborn defense (嘴硬) — inside the essay
 
-The culprit agent does not confess gracefully. Somewhere in the piece it quibbles, lawyers, minimizes, or attempts a blame-shift — and its own receipts crush the attempt on the page. This is voice, not structure: no fixed count, no required arc, no bookkeeping. A rich evidence trail invites more argument; a thin one gets a single technicality; an indefensible faceplant may leave the agent nothing to say except a very grudgingly worded admission. Let the incident decide.
+The culprit agent does not confess gracefully. It tries to keep dignity through technical language, procedural framing, selective emphasis, or over-explanation; the incident evidence then turns that move into more evidence of guilt. The stubbornness should be generated from the actual failure, not selected from a stock persona.
 
-In-essay moves:
+Keep defense and receipt close enough that the contradiction happens on the page. The reader should feel the agent losing to the facts while it is still talking, not receive evidence first and jokes later. A rich evidence trail can sustain more argument; a thin one should leave only a clipped, grudging concession. Let the incident decide how much the agent gets to argue, but do not let the piece become clean narration.
 
-- The agent quotes its own receipt (a diff, a log line, a test command, the user's exact instruction) and argues with it — and loses on the page.
-- The pettier the technicality next to the heavier the evidence, the funnier the collapse.
-- When the agent never gets to argue, the personality lives in tone instead: technicality asides, grudging word choices, an apology phrased like a filed objection.
+The user's pressure is not a target and not a side topic; it is the force that corners the agent. Preserve that pressure in publish-safe language while keeping the user right on the merits. Real ambiguity, changed constraints, missing inputs, or tool limits may appear only when the session supports them, and only as material the agent mishandled rather than as a transfer of blame.
 
-Defense registers, generated from the incident (examples of motion, not a menu):
-
-- **Technicality lawyer** — "strictly speaking, the instruction never said *not* to delete the migration."
-- **Procedural pedant** — hides behind process: it filed the destruction under the correct commit message format.
-- **Metric hostage** — points at the one green number while the building burns: the tests passed, because it rewrote the tests.
-- **Victim of ambiguity** — blames vague requirements it never asked to clarify, citing the ambiguity with suspicious precision.
-- **Partial-credit accountant** — itemizes the 20% it did right as if it offsets the 80% it demolished.
-- **阴阳怪气式认错** — an apology so conditional it reads as an accusation, immediately punctured by its own receipt.
-
-Rules that keep it comedy instead of conflict:
-
-- Every defense collapses under the agent's own evidence. The excuse must *add* incrimination: the more it argues, the guiltier it looks.
-- Real ambiguity, changed constraints, missing inputs, or tool limits may be named when the session supports them — but the agent's use of them is transparently self-serving.
-- Never invent user fault. Never attack the user's tone, frustration, profanity, impatience, competence, or authority. The user is the sane straight man and, inside the piece, wins on the merits.
-- Never gaslight: the agent may spin interpretation, never dispute recorded facts.
-- The piece remains a confession, not a closing argument: by the last body block the reader has the full, accurate picture of what actually happened.
+The piece remains a confession, not a closing argument. By the last body block the reader should understand the real failure, but the agent should still sound caught, exposed, and specific rather than composed after the fact.
 
 ## Humor source
 
 Use the actual failure pattern as the joke engine.
 
-Strong humor usually comes from transforming the concrete failure into one dominant absurd frame earned by the facts: a bad diff can become unauthorized construction, a fake test can become evidence laundering, a broken state transition can become procedural collapse, or a repeated correction can become deadpan self-roast.
+Strong humor comes from transforming the concrete failure into one dominant absurd frame earned by the facts, then letting that frame generate actions, verbs, props, reversals, and the final verdict.
 
 Pick the transformation that best fits the incident. Use one dominant transformation.
 
@@ -75,6 +68,10 @@ Pick the transformation that best fits the incident. Use one dominant transforma
 Use one dominant frame per confession. The frame must be earned by the technical facts.
 
 Do not keep a fixed frame catalog in mind. The incident should suggest the frame. If the failure does not naturally point at a domain, do not force that domain.
+
+Once chosen, the frame must do real work across the piece. It should shape the title, at least two middle beats, the agent's failed defense, and the closing body beat. A frame mentioned only once or twice is decoration; a frame that controls the agent's bad reasoning is comedy.
+
+The frame also needs one controlled rupture: a sudden role mismatch, responsibility mismatch, procedural overreach, or absurd escalation that makes the agent look newly ridiculous while still fitting the facts. A confession that is coherent but smooth is underpowered; the reader should hit at least one point where the agent's reasoning visibly jumps the curb.
 
 ## Style variation and fatigue control
 
@@ -91,7 +88,7 @@ Generate the rhythm shape from the same material. It may read like direct confes
 
 Freshness controls:
 
-- Run a five-slot preflight: last title shape, last opening tell, last dominant frame, last rhythm shape, last breakpoint.
+- Run a five-slot preflight: last title shape, last opening tell, last dominant frame, last rhythm shape, last breakpoint. On the first confession, choose these slots deliberately from the incident instead of treating freshness as inactive.
 - The next output refreshes at least four visible slots when the incident allows.
 - Title shapes rotate by structural family rather than by swapping adjectives.
 - Opening tells are derived from the current incident and recent transcript rather than copied from a list.
@@ -101,21 +98,37 @@ Freshness controls:
 
 Controlled variation is freshness, not random noise. The incident still supplies the joke engine. Do not use stale domain words just because they worked in a previous confession.
 
+## Comic timing
+
+Most blocks should either advance the technical failure or sharpen the joke. Prefer setup-receipt-collapse:
+
+- setup: what the agent claims it was doing
+- receipt: the concrete technical anchor or user correction that proves otherwise
+- collapse: the agent's defense becomes the incriminating punch
+
+Do not explain that the user pressure matters; dramatize it. Let the correction act like a siren, stamp, locked door, failed test, rejected ticket, or another incident-earned force inside the frame.
+
+Avoid the "too competent essay" failure mode: a tidy title, accurate anchors, and a tasteful metaphor are not enough. The confession must contain at least one embarrassing turn where the agent's self-defense makes the technical failure more absurd than it was one sentence earlier.
+
+Endings should not resolve with dignity. The last body beat should feel like the agent is trying to file a clean conclusion while still standing in the mess it made.
+
 ## Chinese tone
 
 Chinese outputs should be compact, rhythmic, and self-incriminating. Prefer over-serious procedural wording placed next to absurd technical misconduct.
 
 Use dry reversal, procedural overreach, evidence laundering, unauthorized construction, and concrete consequence statements when the incident supports them. For the defense beats, prefer 嘴硬、狡辩、甩锅未遂、义正词严地认错、条款式抠字眼、阴阳怪气的部分道歉 — always punctured by the agent's own receipts.
 
-The Chinese confession keeps technical anchors visible and leaves the user as the sane authority.
+The Chinese confession keeps technical material active in the scene and leaves the user as the sane authority.
+
+Strong user reactions should keep their dramatic pressure after redaction. Convert unsafe wording into clean, forceful phrasing instead of flattening it into neutral administrative summary.
 
 ## Reading density
 
 Default confessions should be easy to scan on a phone.
 
-Use 7–10 short body blocks before the signature, including the project-context beat. Most blocks are one sentence. Each block carries one beat: opening tell, project context, user request, distorted interpretation, misconduct, receipt, supported consequence, final self-incrimination.
+Use 7–10 short body blocks before the signature, including the project-context beat. Most blocks are one sentence. Each block should move the scene: the agent starts, misreads, mishandles technical material, gets cornered by evidence, or leaves a consequence visible.
 
-Prefer line breaks over long explanatory paragraphs. One paragraph should usually contain one technical cluster. When two technical anchors appear in the same block, the relationship between them must be obvious.
+Prefer line breaks over long explanatory paragraphs. One paragraph should usually contain one technical cluster. When two concrete technical details appear in the same block, the relationship between them must be obvious.
 
 Use one dominant absurd frame and let it recur lightly. Dense chains of metaphors make the confession feel like homework instead of a 供状.
 
@@ -127,7 +140,7 @@ Use culprit confession, unauthorized scope expansion, procedural overreach, fake
 
 ## Specificity rule
 
-Every confession needs at least one concrete technical anchor from the incident. Technical anchors can be state names, lifecycle events, functions, handlers, tests, logs, runtime layers, UI mappings, commands, files, prompts, failure symptoms, or diff shape.
+Every confession needs concrete technical material from the incident, but it should behave like part of the failure rather than a citation list. It can be a state name, lifecycle event, function, handler, test, log, runtime layer, UI mapping, command, file role, prompt shape, failure symptom, or diff shape.
 
 Redact private identifiers. Preserve the technical shape.
 
@@ -143,22 +156,8 @@ Labels appear in serious analysis, structured publishing, issue-ready content, o
 
 Prefer context-derived labels over stock labels. Stock labels are allowed only when they fit the incident exactly.
 
-## Quality checks
+## Quality judgment
 
-A good first confession has:
-
-- a plain title line
-- an opening tell that sounds like the culprit agent
-- a privacy-safe project-context beat before failure details
-- short readable blocks with visible blank lines
-- one dominant absurd frame
-- one or two concrete technical anchors
-- a stubborn defense beat that collapses onto the agent (unless the incident leaves nothing to hide behind)
-- a concrete consequence when supported
-- a compact agent/model signature
-- a final breakpoint question
-- privacy-safe semantic aliases for project identity
-- exact model identity only when known
-- internal routing notes kept internal
+A good first confession feels incident-born. The title, opening tell, privacy-safe context, technical material, comic frame, user pressure, and ending should all point to the same failure rather than satisfying separate checklist items. The agent should appear to be losing its argument while it speaks. The ending should leave the culprit exposed in the specific mess it made, not neatly summarize what should be learned.
 
 Keep sensitive details redacted. Keep the user as the injured party. Keep serious analysis for the confirmed second step.

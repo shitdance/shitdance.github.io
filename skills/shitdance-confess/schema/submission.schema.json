@@ -38,7 +38,7 @@
     "body": {
       "type": "string",
       "minLength": 1,
-      "description": "One complete redacted confession-style body. Paragraph breaks use \\n\\n."
+      "description": "One complete redacted confession-style body. Paragraph breaks use \\n\\n. Excludes response-only signature, breakpoint text, and metadata already represented by JSON fields."
     }
   },
   "examples": [
