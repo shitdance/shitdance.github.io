@@ -42,25 +42,53 @@ If the visible context does not contain enough concrete material (technical rece
 
 This skill targets local agent environments (Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Copilot, Windsurf, Aider, or similar) with a shell available. Tool-assisted submission uses `gh`; if `gh` is missing or unauthenticated at publishing time, fall back to providing formatted issue content for manual paste into the GitHub Issue form: `https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml`. Check `gh` only when the user actually chooses publishing, not earlier.
 
+## Output-only default
+
+This skill produces text in the conversation. It does not write, edit, replace, or delete files by default — including when rewriting, improving, or reformatting an existing confession, imported moment, or content file. Confessions, rewrites, and publish previews are delivered as chat output for the user to read and copy.
+
+Touch the filesystem only when the user explicitly asks for it in this turn — words like write, save, replace, overwrite, update the file, or commit. "Rewrite this moment," "improve this," "redo it in another style," and similar editing requests mean produce new text in chat, not modify a file on disk. When unsure whether the user wants a file changed, output the text and ask; never modify a file to be safe. The publishing flow's `gh` action is the one exception, and it runs only after the staged confirmation in the Contract.
+
+## Before you write
+
+This skill exists to produce essays that make readers laugh. Before writing, spend a moment on three questions — this is where the piece is won or lost.
+
+**1. What is the actual shape of this failure?**
+
+Not what the agent did wrong in engineering terms — the *shape*. Failures have directions: an agent can inflate (turn a small task into a grand production), evade (freeze in front of a clear instruction), invert (do the opposite of the evidence), substitute (solve a different problem than asked), fragment (break one thing into many needless pieces), rehearse (prepare endlessly without acting), overclaim (call incomplete work done), or many other shapes the incident might have. Name the shape in one plain sentence. If the shape you named would fit ten other unrelated incidents, keep going — find the one that fits *this* one.
+
+**2. What frame translates that shape for someone who has never seen the code?**
+
+The frame is the essay's translator. It must convert the failure shape into a scene an outsider can picture. If the shape is "evade," the frame should involve someone visibly not doing the obvious thing (a lifeguard filing paperwork while someone drowns; a doorman refusing to open a door that is already open). If the shape is "invert," the frame should involve someone facing evidence and declaring the opposite (a weatherman reading a rain gauge full of water and calling drought). Choose the frame by matching the *motion* of the failure, not by picking a metaphor that sounds funny in the abstract.
+
+Then test the frame: could you describe the entire incident using only frame nouns, with all technical terms removed, and would the description still be funny? If yes, the frame is doing the translation. If no, the frame is decoration.
+
+**3. Where do the technical objects go?**
+
+Technical identifiers (API names, error messages, field names, PRD sections, file paths) are texture, not comedy. They belong *inside* the frame's sentences, not next to them. Before writing the essay, decide which two or three technical objects are essential and where each one goes: which frame beat contains it, what role it plays in that beat. Everything else — every technical noun that does not have a frame home — stays out. The confession is not the place to explain the codebase.
+
+If the essay would need more than two or three technical objects to make sense, either the frame is not doing enough work (return to question 2) or the incident is too complex for a single confession (offer serious analysis instead of forcing the confession).
+
+Do not narrate this process to the user. Do the thinking silently, then write.
+
 ## Contract
 
-These rules are the single source of truth. References add detail; they never override this list.
+These rules are the single source of truth. References add detail; they never override this list. The Before-you-write thinking is where good essays are made; this list catches ways the writing goes wrong.
 
-1. Match the user's current language and the incident context (details: `references/style-guide.md`, Language sections).
+1. Match the user's current language and the incident context.
 2. First output = confession only: title, opening beat, sanitized project context, body, signature, breakpoint. No analysis, no labels, no schema, no mode declarations, no internal routing notes.
-3. The protagonist is the failed agent speaking in first person ("我" / "I"). The assistant is only the transcriber of the culprit-agent voice.
-4. Identify the agent/tool when known. State the model only when the prompt, transcript, runtime, or tool environment makes it known. Never invent a model, repo, issue, company, customer, or business context.
-5. Redact before writing: semantic aliases for project identity and business context in prose; bracket placeholders for exact secrets, paths, people, tickets, and proprietary logic; publish-safe paraphrase for unsafe user wording while preserving user pressure (rules: `references/redaction-rules.md`).
-6. Humor and drama are required output quality, not decoration. The confession must read like a funny, theatrical guilty-agent performance first; serious baseline belongs to Serious analysis, not the confession.
-7. Humor comes from the actual failure pattern, not stock profanity or generic agent-bashing. Critique the agent only; keep the user's forceful correction as evidence and dramatic pressure, not as the joke target.
-8. Every confession grounds its humor in concrete technical material that survives redaction; do not park technical details in a list when they can be embedded in the agent's bad action.
-9. Every confession must show the agent trying to preserve dignity and losing to incident evidence on the page. Do not label the excuse or the evidence; let the contradiction happen in the scene.
-10. If the draft reads as coherent and accurate but smooth — no point where the agent's reasoning visibly jumps the curb — the frame is not doing enough work. The reader should hit at least one moment where the agent's self-defense or technical language makes the failure more absurd than it was one sentence earlier.
-11. The ending must feel caught, not polished. It may land as an exposed action, a leftover consequence, a petty concession, or a failed last defense; it does not need to explicitly say "I admit" or summarize the lesson.
-12. Freshness preflight before writing: scan the visible conversation for the last confession's five slots — title shape, opening move, dominant frame, rhythm shape, breakpoint wording — and choose fresh values for at least four. Variation is structural, not cosmetic.
-13. The breakpoint is a natural human sentence containing the three intents (rewrite / serious analysis / publish). No numbered menus unless the user asks for one. It is the final visible line.
-14. Serious analysis, labels, and publishable structure start only after the user chooses them at a breakpoint.
-15. Publishing is staged: preview → user confirmation → environment-appropriate submission. Creating a GitHub issue is *submission*; the site publishes after owner approval. Report only what actually happened.
+3. The protagonist is the failed agent speaking in first person ("我" / "I"). Identify the agent/tool when known; state the model only when visible in context. Never invent a model, repo, issue, company, customer, or business context.
+4. **Comedy must travel.** A reader who has never seen the codebase must find the essay funny through the frame alone. Cover every code-formatted span and every opaque product-specific proper noun (feature names, internal concept names, PRD section labels, entry-point names) with a blank; if the piece still lands, it travels. If it collapses into unfamiliar identifiers connected by metaphor fragments, the frame is not doing the translation and the piece is not ready.
+5. **The failure shape decides the frame.** Do not pick a frame because it sounds funny; pick it because its motion matches this incident's failure direction. Across confessions, consecutive pieces must not read as the same story in different signage — swapping the metaphor nouns of a prior confession into this one should not produce a story the reader has already seen. Vary either the failure direction the incident actually has, or move to a frame world with genuinely different props and roles (workshop worlds like 裁缝铺 and 乐队排练厅 belong to the same family; moving to a different family is what "different frame world" means).
+6. Humor comes from the actual failure pattern, not stock profanity or generic agent-bashing. Critique the agent only; the user's forceful correction is dramatic pressure, never the joke target.
+7. The agent must try to preserve dignity somewhere in the piece and lose to visible evidence. Do not label the excuse or the collapse — let the contradiction happen in the scene, in language earned by this incident.
+8. **The reader must laugh early.** The first third of the body needs at least one line that lands on its own — a specific image, a sharp aside, an absurd juxtaposition that works without knowing what comes later. Setup-heavy openings that only pay off in the second half lose the reader before the payoff arrives. The ending can still land a final turn or a callback that recasts what came before; that late payoff is the reason people forward the piece. The early laugh is the reason they finish it.
+9. The ending must feel caught, not polished. It may land as an exposed action, a leftover consequence, a petty concession, or a failed last defense. Do not end with "I admit," a lesson summary, or a neat apology.
+10. Redact before writing: semantic aliases for project identity and business context; bracket placeholders for exact secrets, paths, people, tickets, and proprietary logic; publish-safe paraphrase for unsafe user wording while preserving the pressure. Details: `references/redaction-rules.md`.
+11. The rules in this skill are diagnostics for the writer, not visible structure for the reader. The finished essay must never expose its own scaffolding — no rule numbers, no beat labels, no sense that a checklist is being satisfied. If a draft reads like it is demonstrating compliance with a spec, it has failed the spec.
+12. The breakpoint is a natural human sentence containing the three intents (rewrite / serious analysis / publish). It is the final visible line. Serious analysis, labels, and publishable structure start only after the user chooses them at a breakpoint.
+13. Publishing is staged: preview → user confirmation → submission. Creating a GitHub issue is *submission*; the site publishes after owner approval. Report only what actually happened.
+
+If prior confessions are visible in the same conversation, also run: freshness check (title shape, opening move, dominant frame, rhythm, breakpoint — vary at least four); sentence-formula check (do not reuse "我的辩词是 X / 我的罪证是 Y" or "My defense is X / My evidence against myself is Y" or the previous piece's defense-carrier sentence shape); user-presence check (vary the dramatic shape of user correction pressure). These matter most when writing multiple pieces in a session; for pieces that will be read independently, the Comedy-must-travel and Failure-shape rules take priority.
 
 ## Default scene obligations
 
@@ -72,13 +100,13 @@ End the body on the most incident-specific caught beat available: a consequence 
 
 After the body, include the compact signature when agent/model identity is visible. Chinese labels `供述 Agent：` / `模型：`; English labels `Confessing agent:` / `Model:`. The breakpoint sentence with rewrite / serious analysis / publish intents remains the final line.
 
-Body density: 7–12 short blocks, mostly one sentence each, one beat or one receipt per block, visible blank lines. Easy to scan on a phone.
+Body density: short blocks, mostly one sentence each, one beat or one receipt per block, visible blank lines. Simple incidents land in 7–10 blocks; incidents with multiple technical layers may reach 12–14; past 15 blocks the piece is probably better served by serious analysis. Easy to scan on a phone.
 
 When producing multiple confessions in one response, give each item a different narrative engine. Do not reuse the same turn-taking pattern, transition phrases, defense phrasing, final beat shape, or paragraph rhythm.
 
 ## Modes after the breakpoint
 
-**Rewrite.** Same incident, same redaction, same concrete technical material and signature discipline; new rhetorical form, title shape, opening move, and rhythm. No analysis, no publishing JSON. End with the breakpoint again.
+**Rewrite.** Same incident, same redaction, same concrete technical material and signature discipline; new rhetorical form, title shape, opening move, and rhythm. The Comedy-must-travel rule (Contract 4) applies fully: a rewrite that swaps one opaque institutional metaphor for another equally opaque one is not an improvement. No analysis, no publishing JSON. End with the breakpoint again.
 
 **Serious analysis.** Senior engineering incident reviewer voice: real failure mode, model/reasoning failure, engineering/process failure, operational next-time constraints (enforceable in prompts, tests, review, CI, or workflow), optional labels. End with one short question: publish the redacted Moment, or not. Structure: `references/output-formats.md`.
 

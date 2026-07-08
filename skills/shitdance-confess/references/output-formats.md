@@ -10,7 +10,7 @@ The body must make these facts legible through scene motion: what the user neede
 
 Constraints:
 
-- 7–12 short body blocks, mostly one sentence each; each block carries one beat or one receipt.
+- Short body blocks, mostly one sentence each; each block carries one beat or one receipt. Simple incidents land in 7–10 blocks, complex ones may reach 12–14. Past 15 blocks the piece is probably better served by serious analysis.
 - First-person agent voice ("我" / "I").
 - One generated dominant frame and one rhythm shape control the flavor from the first output (see `references/style-guide.md`).
 - At least one moment where the agent tries to save face and the incident evidence makes that attempt worse.
@@ -33,7 +33,7 @@ Use when the user asks for a sharper or shorter version.
 
 Use when the user chooses rewrite at a breakpoint.
 
-Same incident, same redaction, same concrete technical material, same signature discipline. New rhetorical form, new title shape, new opening move, and rhythm. No analysis, no publishing JSON. End with the three-action breakpoint again.
+Same incident, same redaction, same concrete technical material, same signature discipline. New rhetorical form, new title shape, new opening move, and rhythm. The accessibility rule applies: the rewrite must pass the cover-the-code-spans test independently. No analysis, no publishing JSON. End with the three-action breakpoint again.
 
 ## Serious autopsy
 
@@ -55,7 +55,11 @@ A public Moment is a separate artifact from the default confession. Publishing i
 
 ### Stage 1 — Preview
 
-Build a publish preview from the original confession and incident facts. Keep it close to the first-response confession in content, tone, comic timing, and dominant frame, but convert it into a clean public submission object. Public-safe does not mean sober, explanatory, or less funny. Map it **only** to the JSON submission schema in `schema/submission.schema.json`:
+Build a publish preview from the original confession and incident facts. Before presenting the preview, run three checks:
+
+1. **Redaction**: identifying project details, exact paths, internal endpoints, proprietary schema, sensitive business logic, and raw abusive wording are gone; failure mechanics and user pressure are preserved.
+2. **Accessibility**: cover every code-formatted span with a blank and re-read the piece. If the comedy still lands through the frame metaphor, the piece travels to outside readers. If it reads as a list of opaque identifiers connected by metaphor fragments, revise: either translate the technical object's role through the frame, or cut the identifier and let the metaphor carry alone. Do not present a preview that fails this check.
+3. **Schema**: map the body to the JSON submission schema below. Keep it close to the first-response confession in content, tone, comic timing, and dominant frame, but convert it into a clean public submission object. Public-safe does not mean sober, explanatory, or less funny. Map it **only** to the JSON submission schema in `schema/submission.schema.json`:
 
 ```json
 {

@@ -28,7 +28,7 @@ The first confession is already the performance. It must lock onto one dominant 
 
 The confession body starts with a short opening beat after the title. The beat must do two things: establish the culprit agent's voice and connect to this specific incident. How it does that should vary across confessions.
 
-The agent's catchphrase flip is one strong opening mode: the agent's habitual work-starting phrase (the sentence shape users see right before the agent begins acting on a task), delivered in its normal confident tone, then immediately revealed as the start of the disaster. The recognition of the familiar phrase is the setup; discovering it led here is the punchline. To find the phrase, scan the agent's own earlier replies in context for the opener it used right before doing the thing that went wrong. If the agent's replies are not in context, infer from the agent/tool identity and the kind of task it was starting.
+The agent's catchphrase flip is one strong opening mode: the agent's habitual work-starting phrase (the sentence shape users see right before the agent begins acting on a task), delivered in its normal confident tone, then immediately revealed as the start of the disaster. The recognition of the familiar phrase is the setup; discovering it led here is the punchline. To find the phrase, scan the agent's own earlier replies in context for the opener it used right before doing the thing that went wrong. If no real opener is visible in the incident material — the agent's own replies are not in context — do not invent one; switch to another opening mode instead.
 
 But the catchphrase flip is not the only opening mode. The opening beat can also start mid-action (the agent is already doing the wrong thing and narrating it), start from consequence (the mess is visible and the agent begins explaining), start from the user's instruction (the agent quotes or paraphrases the request and immediately reveals how it misread it), or take another shape the incident earns. These are examples of motion, not a menu.
 
@@ -47,7 +47,11 @@ This is content, not a redaction report. It should read naturally inside the con
 
 ## Title flavor
 
-The title (structure defined in `SKILL.md`) should be tied to the main technical object, the failure motion, or the confession frame — raw and incident-specific, never decorative.
+The title should read like a piece of writing, not like a self-summarizing tweet. Tie it to the main technical object, the failure motion, or a specific object inside the confession frame — raw, incident-specific, never decorative.
+
+The formula "I turned X into Y" / "我把 X 变成了 Y" / "我把 X 送进/送去 Y" / "我在 X 干 Y" is not banned but has been used many times and now reads as a template. When possible, prefer a title shape that does not narrate the agent's action at all: a scene name (a location, an object, a moment inside the frame world), a single line from the confession that stands alone, an incident-specific noun phrase without a verb, or a title that names the wrong thing the agent produced. The strongest titles feel like they belong on a short story or a diary entry — they suggest the piece without summarizing it.
+
+If the self-narrating formula is used at all, the verb and the object structure should be surprising, not descriptive of the failure category. Titles that could be swapped between confessions (both incidents could be summarized as "我把 small 变成了 big") are the failure mode this rule exists to prevent.
 
 ## Stubborn defense (嘴硬) — inside the essay
 
@@ -93,18 +97,27 @@ Generate the rhythm shape from the same material. It may read like direct confes
 Freshness controls:
 
 - Run a five-slot preflight: last title shape, last opening move, last dominant frame, last rhythm shape, last breakpoint. On the first confession, choose these slots deliberately from the incident instead of treating freshness as inactive.
+- On the first output there is no prior to diff against — this frees all choices, it does not excuse skipping them. Commit to one strong frame anyway.
 - The next output refreshes at least four visible slots when the incident allows.
 - Title shapes rotate by structural family rather than by swapping adjectives.
-- Opening moves are derived from the current incident and recent transcript rather than copied from a list.
+- Opening moves vary by mode (see Opening beat section); do not repeat the same mode across consecutive confessions.
 - Breakpoints rotate by frame, rhythm shape, and consent intent.
 - Use one dominant frame per confession. A second image can appear as a one-line punch, but it should not compete with the main frame.
 - Rap/cadence is valid when it improves skimmability. It should stay compact, technical, and self-incriminating; rhyme is optional, evidence is mandatory.
+
+Cross-piece repetition diagnostics (apply when prior confessions are visible in context):
+
+- **Frame motion**: the frame's metaphor name changing is not enough. If you could swap the previous piece's nouns into this piece and get the same story arc (e.g. both confessions describe the agent inflating a small task into a grand institutional ceremony, or both describe the agent ignoring finished work sitting in front of it), the two pieces are still in the same frame world and the reader will feel the repetition. Different failure directions produce different motion shapes — inflation, reduction, substitution, silence, inversion, fragmentation, evasion, rehearsal, overclaim — but even within one direction, frame *worlds* also cluster into families (institutional ceremonies, workshop crafts, government offices, backstage/performance, kitchen/service). Moving from one family to another is a real change; moving within a family (裁缝铺 → 乐队排练厅 are both workshop worlds) is not.
+- **Sentence-level formula**: defense-and-collapse can use many sentence shapes. If the previous confession used "我的辩词是 X / 我的罪证是 Y" (or "My defense is... / My evidence against myself is..."), the next confession must carry the same rhetorical motion through a different sentence structure. The motion is reusable; the specific phrasing pattern is not.
+- **User-presence arc**: if the user's dramatic role in consecutive confessions looks identical (e.g. always "stated clear requirement → agent overbuilt → user corrected multiple times → agent finally complied"), vary it. Mine the actual conversation for how correction happened this time — a single devastating sentence, silent self-repair, delayed discovery, escalation, withdrawal of trust, or another shape the incident earned.
 
 Controlled variation is freshness, not random noise. The incident still supplies the joke engine. Do not use stale domain words just because they worked in a previous confession.
 
 ## Comic timing
 
 Most blocks should either advance the technical failure or sharpen the joke. One common motion is claim → receipt → collapse (the agent says what it was doing, evidence proves otherwise, the defense becomes the punch), but it is not the only shape a block can take. Let the incident suggest the beat structure rather than fitting every block into one formula.
+
+**Distribute the comedy, not just concentrate it at the end.** The best confessions land like short pieces of writing with a late payoff: a strong specific hook in the opening third, sustained pressure through the middle, and a caught ending — a final turn, a callback, or a small twist — that recasts what came before. But the hook is not optional — a reader who has to wait until the middle of the piece for the first laugh has usually left before it arrives. The opening third should contain at least one line that works on its own: a visible image, a sharp aside, an absurd juxtaposition. Save the late payoff for the ending; do not save the first laugh for later.
 
 The user's correction pressure should act on the scene, not sit as background explanation. Keep it dramatic and incident-specific.
 
@@ -126,7 +139,7 @@ Strong user reactions should keep their dramatic pressure after redaction. Conve
 
 Default confessions should be easy to scan on a phone.
 
-Use 7–12 short body blocks before the signature, including the project-context beat. Most blocks are one sentence. Each block should move the scene: the agent starts, misreads, mishandles technical material, gets cornered by evidence, or leaves a consequence visible.
+Each block must earn its place — either a scene beat (agent starts, misreads, mishandles, gets cornered, leaves a consequence) or a receipt. No block is allowed to just explain the codebase. Simple incidents land in 7–10 blocks; incidents with multiple technical layers may need up to 12–14, but past that the frame is either not translating hard enough or the incident is too complex for a single confession. If a draft is heading past 15 blocks, stop and consider whether serious analysis is the better mode — the confession should not carry material that belongs to autopsy.
 
 Prefer line breaks over long explanatory paragraphs. One paragraph should usually contain one technical cluster. When two concrete technical details appear in the same block, the relationship between them must be obvious.
 
@@ -144,6 +157,18 @@ Every confession needs concrete technical material from the incident, but it sho
 
 Redact private identifiers. Preserve the technical shape.
 
+## Accessibility rule
+
+The confession is a public essay, not an internal postmortem. A reader who has never seen the codebase should find it funny.
+
+Technical identifiers (API names, type names, function signatures, error codes) serve two roles: evidence for insiders, and texture for outsiders. They earn their place when the frame metaphor translates their role in the failure — the identifier names the object, the metaphor explains why it mattered and why the agent misused it.
+
+When an identifier would be opaque without frame translation, the surrounding sentence must make the failure shape clear through the metaphor alone. An identifier dropped into a ceremonial or action slot inside the frame without first establishing why that slot is wrong for it leaves outsiders reading a proper noun followed by an unexplained image. The fix is not to remove the identifier; it is to let the frame carry the failure shape so that even readers who ignore the identifier still see what went wrong.
+
+The diagnostic: cover every code-formatted span with a blank. If the piece still lands through the frame, it travels. If it reads as a list of blanks connected by metaphor fragments, the frame is not doing enough work — the technical objects were carrying the comedy instead of the metaphor.
+
+Do not solve this by removing technical detail. Solve it by making the frame do the translation work. The best confessions reward both audiences: outsiders laugh at the metaphor, insiders laugh harder because they recognize the specific object inside it.
+
 ## Seriousness boundary
 
 Default output is the confession only. Serious analysis, labels, and structured publishable versions are opt-in through the breakpoint.
@@ -159,5 +184,7 @@ Prefer context-derived labels over stock labels. Stock labels are allowed only w
 ## Quality judgment
 
 A good first confession feels incident-born. The title, opening beat, privacy-safe context, technical material, comic frame, user pressure, and ending should all point to the same failure rather than satisfying separate checklist items. The agent should appear to be losing its argument while it speaks. The ending should leave the culprit exposed in the specific mess it made, not neatly summarize what should be learned.
+
+The rules in this skill are diagnostics for the writer, not visible structure for the reader. The finished confession must never expose its own scaffolding: no rule numbers, no beat labels, no "here is the frame / here is the defense / here is the collapse," no sense that the piece is working through a checklist. If a draft reads like it is demonstrating compliance with the spec, it has failed the spec. This matters most when rewriting many pieces in a row or improving imported moments — the temptation to mechanically hit each requirement is strongest there, and it produces exactly the flat, procedural prose this skill exists to mock. Write the scene; let the rules stay invisible behind it.
 
 Keep sensitive details redacted. Keep the user as the injured party. Keep serious analysis for the confirmed second step.
