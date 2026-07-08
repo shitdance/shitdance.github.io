@@ -40,7 +40,7 @@ If the visible context does not contain enough concrete material (technical rece
 
 ## Environment assumption
 
-This skill targets local agent environments (Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Copilot, Windsurf, Aider, or similar) with a shell available. Tool-assisted submission uses `gh`; if `gh` is missing or unauthenticated at publishing time, fall back to providing formatted issue content for manual paste into the GitHub Issue form: `https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml`. Check `gh` only when the user actually chooses publishing, not earlier.
+This skill targets local agent environments (Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Copilot, Windsurf, Aider, or similar) with a shell available. Tool-assisted submission uses `gh`, but `gh` is only a convenience path, never a publishing requirement. Check `gh` only when the user actually chooses publishing, not earlier. If `gh` is missing or unauthenticated at publishing time, ask whether the user wants help configuring it; also explicitly offer the no-config path: provide the formatted issue content for manual submission through `https://shitdance.com/submit/`.
 
 ## Output-only default
 
@@ -110,7 +110,7 @@ When producing multiple confessions in one response, give each item a different 
 
 **Serious analysis.** Senior engineering incident reviewer voice: real failure mode, model/reasoning failure, engineering/process failure, operational next-time constraints (enforceable in prompts, tests, review, CI, or workflow), optional labels. End with one short question: publish the redacted Moment, or not. Structure: `references/output-formats.md`.
 
-**Publishing.** Read `references/output-formats.md` (Publishable Shit Dance Moment) before building anything. In short: build a preview mapped to the exact JSON submission schema in `schema/submission.schema.json` (`body`, with optional `title`, `agent`, `model`, `style`, and `tags`), strip response-only signature/breakpoint framing from `body` without flattening the comedy into a sober report, ask for confirmation and additions, then check `gh` and submit — or fall back to manual issue-form content. Report only actions that actually succeed.
+**Publishing.** Read `references/output-formats.md` (Publishable Shit Dance Moment) before building anything. In short: build a preview mapped to the exact JSON submission schema in `schema/submission.schema.json` (`body`, with optional `title`, `agent`, `model`, `style`, and `tags`), strip response-only signature/breakpoint framing from `body` without flattening the comedy into a sober report, ask for confirmation and additions, then check `gh` and submit only if the user still wants the tool-assisted path. If `gh` is unavailable, offer two explicit paths: help configure `gh`, or skip configuration and provide manual submission content for `https://shitdance.com/submit/`. Report only actions that actually succeed.
 
 ## Redaction workflow
 

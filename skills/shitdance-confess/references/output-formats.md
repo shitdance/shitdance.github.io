@@ -89,8 +89,9 @@ Ask the user to confirm the preview and whether to add or remove anything. Wait.
 After explicit confirmation:
 
 1. Check `command -v gh`, then `gh auth status` (or a repo read against `shitdance/shitdance.github.io`).
-2. If `gh` is available and authenticated: create a GitHub issue in `shitdance/shitdance.github.io` with the single body field containing the JSON block, plus safe labels such as `moment:pending` and `source:issue` when permissions allow.
-3. If `gh` is missing or unauthenticated: do not improvise another channel. Point the user to the Issue form at `https://github.com/shitdance/shitdance.github.io/issues/new?template=shitdance-moment.yml` and offer two paths: help install/configure `gh`, or provide the formatted issue content for manual paste.
+2. If `gh` is available and authenticated: ask for the final go-ahead if needed, then create a GitHub issue in `shitdance/shitdance.github.io` with the single body field containing the JSON block, plus safe labels such as `moment:pending` and `source:issue` when permissions allow.
+3. If `gh` is missing: say so plainly, ask whether the user wants help installing/configuring it, and also explicitly say they can skip configuration. When they do not want to configure `gh`, provide the formatted issue content and point them to `https://shitdance.com/submit/` for manual submission.
+4. If `gh` is installed but unauthenticated or not ready for this repo: ask whether the user wants help configuring/authenticating it, and also explicitly say they can skip configuration. When they do not want to configure `gh`, provide the formatted issue content and point them to `https://shitdance.com/submit/` for manual submission.
 
 ### Stage 3 — Reporting
 
