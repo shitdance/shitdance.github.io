@@ -229,9 +229,7 @@
   }
 
   function initShareImage() {
-    const trigger = document.querySelector("[data-share-image]");
-    const detail = document.querySelector(".moment-detail");
-    if (!trigger || !detail) return;
+    if (!document.querySelector("[data-share-image]")) return;
 
     const thinkingPhraseGroups = [
       ["Cogitating", "Pondering", "Musing", "Ruminating", "Discombobulating"],
@@ -283,7 +281,9 @@
       return new URL(`../../assets/${filename}`, window.location.href).href;
     }
 
-    function pageUrl() {
+    function pageUrl(trigger) {
+      const explicitUrl = trigger?.dataset.shareUrl;
+      if (explicitUrl) return new URL(explicitUrl, window.location.href).href;
       const canonical = document.querySelector("link[rel='canonical']");
       return canonical?.href || window.location.href.split("#")[0];
     }
@@ -349,6 +349,7 @@
 
     function closeModal() {
       const root = getModal();
+      root.classList.remove("is-expanded");
       root.classList.remove("is-open");
       root.setAttribute("aria-hidden", "true");
       document.body.classList.remove("share-image-lock");
@@ -419,6 +420,7 @@
       const root = getModal();
       const body = root.querySelector("[data-share-body]");
       currentDataUrl = dataUrl;
+      root.classList.remove("is-expanded");
       if (body) {
         body.innerHTML = "";
         const stage = document.createElement("div");
@@ -427,18 +429,37 @@
         image.className = "share-image-preview";
         image.src = dataUrl;
         image.alt = text("share_image_modal_title", "Share image");
+        image.setAttribute("role", "button");
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("aria-label", text("share_image_expand", "Open full screen"));
+        image.addEventListener("click", () => {
+          root.classList.toggle("is-expanded");
+          image.setAttribute(
+            "aria-label",
+            root.classList.contains("is-expanded")
+              ? text("share_image_collapse", "Exit full screen")
+              : text("share_image_expand", "Open full screen")
+          );
+        });
+        image.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            image.click();
+          }
+        });
         stage.appendChild(image);
         body.appendChild(stage);
       }
       openModal();
     }
 
-    function collectShareData() {
-      const title = detail.querySelector(".reader-head h1")?.textContent.trim() || document.title.replace(/\s+\|\s+Shit Dance$/, "");
-      const paragraphs = Array.from(detail.querySelectorAll(".reader-section p"))
+    function collectDetailShareData(trigger) {
+      const detail = trigger.closest(".moment-detail") || document.querySelector(".moment-detail");
+      const title = detail?.querySelector(".reader-head h1")?.textContent.trim() || document.title.replace(/\s+\|\s+Shit Dance$/, "");
+      const paragraphs = Array.from(detail?.querySelectorAll(".reader-section p") || [])
         .map((node) => node.textContent.trim())
         .filter(Boolean);
-      const meta = Array.from(detail.querySelectorAll(".reader-meta .agent-chip"))
+      const meta = Array.from(detail?.querySelectorAll(".reader-meta .agent-chip") || [])
         .map((node) => node.textContent.trim())
         .filter(Boolean)
         .slice(0, 2);
@@ -447,9 +468,36 @@
         title,
         paragraphs,
         meta,
-        url: pageUrl(),
+        url: pageUrl(trigger),
         logoUrl: assetUrl("logo.png")
       };
+    }
+
+    function collectCardShareData(trigger) {
+      const card = trigger.closest("[data-share-card]");
+      const title = card?.querySelector("h2")?.textContent.trim() || document.title.replace(/\s+\|\s+Shit Dance$/, "");
+      const summary = card?.querySelector("p")?.textContent.trim();
+      const tags = Array.from(card?.querySelectorAll(".moment-tags span") || [])
+        .map((node) => node.textContent.trim())
+        .filter(Boolean);
+      const paragraphs = [summary, tags.length ? tags.join(" · ") : ""].filter(Boolean);
+      const meta = Array.from(card?.querySelectorAll(".moment-card-meta .agent-chip") || [])
+        .map((node) => node.textContent.trim())
+        .filter(Boolean)
+        .slice(0, 2);
+      return {
+        lang: languageKey(),
+        title,
+        paragraphs,
+        meta,
+        url: pageUrl(trigger),
+        logoUrl: assetUrl("logo.png")
+      };
+    }
+
+    function collectShareData(trigger) {
+      if (trigger.closest("[data-share-card]")) return collectCardShareData(trigger);
+      return collectDetailShareData(trigger);
     }
 
     function textTokens(value) {
@@ -649,36 +697,52 @@
     async function drawFooter(ctx, data) {
       const [logo, qr] = await Promise.all([loadImage(data.logoUrl), makeQrImage(data.url)]);
       const y = 1020;
+      const contentX = 68;
+      const qrSize = 90;
+      const qrCard = 104;
+      const qrX = 900 - 54 - qrCard;
+      const brandTop = y + 28;
+      const ruleX = 278;
+      const sloganX = 306;
+      const sloganWidth = qrX - sloganX - 24;
+      const sloganTop = y + 30;
 
-      ctx.drawImage(logo, 82, y + 14, 68, 68);
+      ctx.drawImage(logo, contentX, brandTop, 58, 58);
 
       ctx.fillStyle = "#1f2f45";
       ctx.font = "850 17px Inter, system-ui, sans-serif";
       ctx.textBaseline = "top";
-      ctx.fillText("屎山跳动", 164, y + 14);
+      ctx.fillText("屎山跳动", contentX + 72, brandTop);
 
       ctx.fillStyle = "#1f2f45";
       ctx.font = "800 18px Inter, system-ui, sans-serif";
-      ctx.fillText("Shit Dance", 164, y + 39);
+      ctx.fillText("Shit Dance", contentX + 72, brandTop + 25);
 
       ctx.fillStyle = "rgba(31,47,69,.58)";
       ctx.font = "14px Inter, system-ui, sans-serif";
-      ctx.fillText("shitdance.com", 164, y + 66);
+      ctx.fillText("shitdance.com", contentX + 72, brandTop + 52);
 
       ctx.strokeStyle = "rgba(101,119,151,.26)";
       ctx.beginPath();
-      ctx.moveTo(292, y + 14);
-      ctx.lineTo(292, y + 86);
+      ctx.moveTo(ruleX, y + 24);
+      ctx.lineTo(ruleX, y + 96);
       ctx.stroke();
 
       ctx.fillStyle = "rgba(31,47,69,.74)";
       ctx.font = "700 14px Inter, system-ui, sans-serif";
-      ctx.fillText("Agentic genius is 1% judgment and 99% agent-generated shit", 316, y + 22);
-      ctx.fillText("mountain.", 316, y + 40);
+      wrapText(ctx, "Agentic genius is 1% judgment and 99% agent-generated shit mountain.", sloganWidth)
+        .slice(0, 2)
+        .forEach((line, index) => {
+          ctx.fillText(line, sloganX, sloganTop + index * 18);
+        });
 
       ctx.fillStyle = "rgba(31,47,69,.58)";
       ctx.font = "650 13px Inter, system-ui, sans-serif";
-      ctx.fillText("Agentic 天才，是 1% 的判断，加 99% 的 Agent 屎山。", 316, y + 66);
+      wrapText(ctx, "Agentic 天才，是 1% 的判断，加 99% 的 Agent 屎山。", sloganWidth)
+        .slice(0, 2)
+        .forEach((line, index) => {
+          ctx.fillText(line, sloganX, sloganTop + 46 + index * 16);
+        });
 
       ctx.save();
       ctx.shadowColor = "rgba(31,47,69,.08)";
@@ -686,11 +750,11 @@
       ctx.shadowOffsetY = 10;
       ctx.fillStyle = "#fff";
       ctx.beginPath();
-      roundedRect(ctx, 742, y + 10, 104, 104, 8);
+      roundedRect(ctx, qrX, y + 10, qrCard, qrCard, 8);
       ctx.fill();
       ctx.restore();
 
-      ctx.drawImage(qr, 749, y + 17, 90, 90);
+      ctx.drawImage(qr, qrX + 7, y + 17, qrSize, qrSize);
     }
 
     async function renderShareImage(data) {
@@ -711,7 +775,7 @@
       return canvas.toDataURL("image/png");
     }
 
-    async function generate() {
+    async function generate(trigger) {
       currentDataUrl = "";
       openTerminalLoading();
 
@@ -724,7 +788,7 @@
 
       try {
         const startedAt = performance.now();
-        const dataUrl = await renderShareImage(collectShareData());
+        const dataUrl = await renderShareImage(collectShareData(trigger));
         setPreview(dataUrl);
         await sleep(Math.max(0, 3200 - (performance.now() - startedAt)));
         closeTerminalLoading();
@@ -735,9 +799,19 @@
       }
     }
 
-    trigger.addEventListener("click", generate);
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-share-image]");
+      if (!trigger) return;
+      event.preventDefault();
+      generate(trigger);
+    });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && modal?.classList.contains("is-open")) {
+        if (modal.classList.contains("is-expanded")) {
+          modal.classList.remove("is-expanded");
+          modal.querySelector(".share-image-preview")?.setAttribute("aria-label", text("share_image_expand", "Open full screen"));
+          return;
+        }
         closeModal();
       }
     });
